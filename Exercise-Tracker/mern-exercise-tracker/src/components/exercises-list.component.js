@@ -36,7 +36,15 @@ const Exercise = props => (
         But we don't do that here because our href isn't doing anything we can do that later
       */}
       <td>
-        <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+        <Link to={"/edit/"+props.exercise._id}>
+          <button type="button">
+            edit
+          </button>
+        </Link>
+        |  
+        <button onClick={() => { props.deleteExercise(props.exercise._id) }}>
+          delete
+        </button>
       </td>
     </tr>
   )
