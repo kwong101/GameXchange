@@ -5,6 +5,8 @@ import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
 
 const logo = require('../ge_logo.svg');
 
+
+
 export default class MyNavbar extends Component {
 
   constructor(props) {
@@ -33,6 +35,7 @@ export default class MyNavbar extends Component {
               width="30"
               height="30"
               className="d-inline-block align-top"
+              fill="white"
             />{' '}
             GameXchange
           </Navbar.Brand>
@@ -50,10 +53,10 @@ export default class MyNavbar extends Component {
         <div className={"collapse navbar-collapse " + show}>
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/" className="nav-link">Exercises</Link>
+              <Link to="/" className="nav-link">About Us</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/create" className="nav-link">Create Exercise Log</Link>
+              <Link to="/create" className="nav-link">FAQ</Link>
             </li>
             <li className="navbar-item">
               <Link to="/user" className="nav-link">Create User</Link>
