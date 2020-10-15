@@ -31,6 +31,7 @@ export default class CreateUser extends Component {
         // we link this after finishing some front end stuff
         console.log(user);
 
+        // come back to this? kinda confused
         axios.post('http://localhost:5000/users/add', user)
             .then(res => console.log(res.data));
 
