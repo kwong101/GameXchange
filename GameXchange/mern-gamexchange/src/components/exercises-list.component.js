@@ -33,8 +33,7 @@ const Exercise = props => (
         other component. (that can be found below)
 
         You SHOULD use a button and style it as a link for the delete portion
-        But we don't do that here because our href isn't doing anything we can do that later.
-        (I changed it to a button and styled it as a link, its still ugly tho)
+        But we don't do that here because our href isn't doing anything we can do that later
       */}
       <td>
         <Link to={"/edit/"+props.exercise._id}>
