@@ -16,7 +16,8 @@ export default class AboutUs extends Component {
                   </Card>
                 </Col>
 
-                { /* <Image height='0.3rem' src="https://source.unsplash.com/1280x720/daily/?boardgame" 
+                { /* FIXME: Small change here to test something
+                <Image height='0.3rem' src="https://source.unsplash.com/1280x720/daily/?boardgame" 
                       alt="Puzzle or board game." fluid
                     />
                 </Col>
@@ -33,10 +34,16 @@ export default class AboutUs extends Component {
                 </Col> 
             </Row>
             <Row>
-                <Col md="auto">
-                    <h3>
-                        How it works
-                    </h3>
+                <Col sm>
+                    {/* 
+                      FIXME: should i be using center like this? isn't it bad
+                      practice to style using html? 
+                    */}
+                    <center>
+                      <h3>
+                          How it works
+                      </h3>
+                    </center>
                 </Col>
             </Row>
             
@@ -45,7 +52,14 @@ export default class AboutUs extends Component {
                     <Card stepone = "text-c" style={{ width: '250px', Height: 'auto' }} >
                     <Card.Img variant="App store." src="https://source.unsplash.com/250x250/daily/?appstore" />
                         <Card.Body>
-                            <Card.Title>Do Something...</Card.Title>
+                          {/* 
+                            FIXME: used <center> again
+                          */}
+                          <center>
+                            <Card.Title>
+                              Do Something...
+                            </Card.Title>
+                          </center>
                             <Card.Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Sed dictum ipsum eu metus dapibus vestibulum.
@@ -58,7 +72,14 @@ export default class AboutUs extends Component {
                   <Card style={{ width: '250px', Height: 'auto' }}>
                     <Card.Img variant="Person running." src="https://source.unsplash.com/250x250/daily/?running"/>
                         <Card.Body>
-                            <Card.Title>...Then do this...</Card.Title>
+                          {/* 
+                            FIXME: used <center> again
+                          */}
+                          <center>
+                            <Card.Title>
+                              ...Then do this...
+                            </Card.Title>
+                          </center>
                             <Card.Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Sed dictum ipsum eu metus dapibus vestibulum.
@@ -71,7 +92,11 @@ export default class AboutUs extends Component {
                   <Card style={{ width: '250px', Height: 'auto' }}>
                     <Card.Img variant="Confetti." src="https://source.unsplash.com/250x250/daily/?confetti" />
                         <Card.Body>
-                            <Card.Title>...Then it's fun!</Card.Title>
+                          <center>
+                            <Card.Title>
+                              ... Then it's fun!
+                            </Card.Title>
+                          </center>
                             <Card.Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Sed dictum ipsum eu metus dapibus vestibulum.
