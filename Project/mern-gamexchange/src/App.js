@@ -11,7 +11,6 @@ import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
 
-
 function App() {
   return (
     <Router>
@@ -20,7 +19,7 @@ function App() {
         <br/> 
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={AboutUs} />
-        <Route path="/viewlog" exact component={ExercisesList} />
+        <Route path="/viewlogs" exact component={ExercisesList} />
         <Route path="/edit/:id" component={EditExercise} />
         <Route path="/create" component={CreateExercise} />
         <Route path="/user" component={CreateUser} />

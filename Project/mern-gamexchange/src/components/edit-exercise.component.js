@@ -44,14 +44,14 @@ export default class EditExercise extends Component {
             console.log(error);
           })
 
-          axios.get('http://localhost:5000/users/')
-            .then(response => {
-                if (response.data.length > 0) { 
-                    this.setState({
-                        users: response.data.map(user => user.username),
-                    })
-                }
-            })
+        axios.get('http://localhost:5000/users/')
+        .then(response => {
+            if (response.data.length > 0) { 
+                this.setState({
+                    users: response.data.map(user => user.username),
+                })
+            }
+        })
     }
 
     onChangeUsername(e) {
@@ -94,7 +94,7 @@ export default class EditExercise extends Component {
         axios.post('http://localhost:5000/exercises/update/'+this.props.match.params.id, exercise)
             .then(res => console.log(res.data));
 
-        window.location = '/';
+        window.location = '/viewlogs';
     }
 
     render() {

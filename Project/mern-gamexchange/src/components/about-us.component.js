@@ -68,8 +68,8 @@ export default class AboutUs extends Component {
                     </Card>
                 </Col>
 
-                <Col sm>
-                  <Card style={{ width: '250px', Height: 'auto' }}>
+                <Col xs="auto">
+                  <Card style={{ width: '250px', Height: 'auto'}} >
                     <Card.Img variant="Person running." src="https://source.unsplash.com/250x250/daily/?running"/>
                         <Card.Body>
                           {/* 
