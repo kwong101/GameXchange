@@ -10,6 +10,7 @@ import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
+import ProductList from './components/listing.component';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/edit/:id" component={EditExercise} />
         <Route path="/create" component={CreateExercise} />
         <Route path="/user" component={CreateUser} />
+        <Route path="/listing" component={ProductList} />
       </div>
     </Router>
   );

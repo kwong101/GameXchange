@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Form, FormControl, Button, Nav, NavDropdown} from 'react-bootstrap'
 
 
 const logo = require('../ge_logo.svg');
@@ -26,8 +26,8 @@ export default class MyNavbar extends Component {
     const show = (this.state.menu) ? "show" : "" ;
 
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Navbar bg="dark" variant="dark">
+      <nav>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand href="/">
             <img
               alt="GameXchange Logo"
@@ -39,18 +39,47 @@ export default class MyNavbar extends Component {
             />{' '}
             GameXchange
           </Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+
+          <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+          <Nav.Link href="/about">About Us</Nav.Link>
+          <Nav.Link href="/listing">Browse Listings</Nav.Link>
+            <NavDropdown title="More" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/create">Create Log</NavDropdown.Item>
+              <NavDropdown.Item href="/viewlogs">View Logs</NavDropdown.Item>
+              <NavDropdown.Item href="/user">Create User</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+            <Form inline>
+            <FormControl type="text" placeholder="Search" className="ml-auto" />
+            <Button variant="outline-success">Search</Button>
+            </Form>
+          </Nav>
+        </Navbar.Collapse>
+
+          
         
         </Navbar>
-
-        {/* 
-        <Link to="/" className="navbar-brand">GameXchange</Link>
-        */}
 
         <button className="navbar-toggler" type="button" onClick={ this.toggleMenu }>
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className={"collapse navbar-collapse " + show}>
+        
+
+        {/* 
+        <Link to="/" className="navbar-brand">GameXchange</Link>
+        */}
+
+        {/* <button className="navbar-toggler" type="button" onClick={ this.toggleMenu }>
+          <span className="navbar-toggler-icon"></span>
+        </button> */}
+
+        {/* <div className={"collapse navbar-collapse " + show}>
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
               <Link to="/about" className="nav-link">About Us</Link>
@@ -64,18 +93,17 @@ export default class MyNavbar extends Component {
             <li className="navbar-item">
               <Link to="/user" className="nav-link">Create User</Link>
             </li>
-          </ul>
+            <li className="navbar-item">
+              <Link to="/listing" className="nav-link">Browse Listings</Link>
+            </li>
+          </ul> */}
 
 
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          
+</nav>
 
 
-        </div>
-
-      </nav>
+      
     
       );
   }

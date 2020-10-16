@@ -35,4 +35,21 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+/* DEBUG: maybe its listings not listing 3 lines down? */
+router.route('/:id').get((req, res) => {
+  Listing.findById(req.params.id)
+    .then(listing => res.json(listing))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+
+router.route('/:id').delete((req, res) => {
+  Listing.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Game deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 module.exports = router;

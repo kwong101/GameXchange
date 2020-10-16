@@ -7,75 +7,74 @@ export default class Home extends Component {
 
     render() {
       return (
-        <div>
+        <div style={{width: "auto"}}>
           <Container fluid>
-            <Row sm= {1}>
+            <Row>
 
-                <Col xs="auto">
+                <Col xs>
                     <center>  
                       <h1>
-                          GameXchange
+                          GAMEXCHANGE
                       </h1>
                     </center>
                 </Col> 
             </Row>            
-            <Row sm={1} md={3}>
-                <Col sm>
-                    <Card stepone = "text-c" style={{ width: '250px', Height: 'auto' }} >
-                    <Card.Img variant="App store." src="https://source.unsplash.com/250x250/daily/?appstore" />
-                        <Card.Body>
-                          {/* 
-                            FIXME: used <center> again
-                          */}
-                          <center>
-                            <Card.Title>
-                              Board Games
-                            </Card.Title>
-                          </center>
-                            <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+            <Row xs={1} md={3}>
+              <center>  
+                <Col xs={8} md={12}>
+                    <Card className="board_game_card" style={{ width: 'auto', margin: '10px'}} >
+                      <Card.Link href="/listing">
+                        <Card.Img variant="top" src="https://source.unsplash.com/250x250/?boardgame"/>
+                            <Card.Body>
+                              {/* 
+                                FIXME: used <center> again
+                              */}
+                              <center>
+                                <Card.Title>
+                                  Board Games
+                                </Card.Title>
+                              </center>
+                            </Card.Body>
+                          </Card.Link>
+                        </Card>
+                  </Col>
+                </center>
+                <center>             
+                <Col xs={8} md={12} >
+                  <Card className="puzzle_card" style={{width: 'auto', margin: '10px'}}>
+                    <Card.Link href="/listing">  
+                      <Card.Img variant="top" src="https://source.unsplash.com/250x250/daily/?puzzle"/>
+                          <Card.Body>
+                            {/* 
+                              FIXME: used <center> again
+                            */}
+                            <center>
+                              <Card.Title>
+                                Puzzles
+                              </Card.Title>
+                            </center>
+                          </Card.Body>
+                    </Card.Link>
+                  </Card>
                 </Col>
+                </center>
 
-                <Col sm>
-                  <Card style={{ width: '250px', Height: 'auto' }}>
-                    <Card.Img variant="Person running." src="https://source.unsplash.com/250x250/daily/?running"/>
-                        <Card.Body>
-                          {/* 
-                            FIXME: used <center> again
-                          */}
-                          <center>
-                            <Card.Title>
-                              Puzzles
-                            </Card.Title>
-                          </center>
-                            <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
-                            </Card.Text>
-                        </Card.Body>
+                <center>  
+                  <Col xs={8} md={12}>
+                    <Card className="card_game_card" style={{ width: 'auto', margin: '10px' }}>
+                      <Card.Link href="/listing">
+                        <Card.Img variant="top" src="https://source.unsplash.com/250x250/daily/?cardgame" />
+                            <Card.Body>
+                              <center>
+                                <Card.Title>
+                                  Card Games
+                                </Card.Title>
+                              </center>
+                            </Card.Body>
+                      </Card.Link>
                     </Card>
                   </Col>
-
-                <Col sm >
-                  <Card style={{ width: '250px', Height: 'auto' }}>
-                    <Card.Img variant="Confetti." src="https://source.unsplash.com/250x250/daily/?confetti" />
-                        <Card.Body>
-                          <center>
-                            <Card.Title>
-                              Card Games
-                            </Card.Title>
-                          </center>
-                            <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                </center> 
             </Row>
           </Container>
         </div>

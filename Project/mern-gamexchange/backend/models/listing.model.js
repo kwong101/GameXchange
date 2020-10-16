@@ -46,6 +46,7 @@ const listingSchema = new Schema({
   },
 
   images: {
+    /* DEBUG: If buffer type doesnt work, change the type like string */
     type: Buffer,
     required: true,
   }
