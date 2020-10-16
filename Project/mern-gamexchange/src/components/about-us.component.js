@@ -16,7 +16,8 @@ export default class AboutUs extends Component {
                   </Card>
                 </Col>
 
-                { /* <Image height='0.3rem' src="https://source.unsplash.com/1280x720/daily/?boardgame" 
+                { /* FIXME: Small change here to test something
+                <Image height='0.3rem' src="https://source.unsplash.com/1280x720/daily/?boardgame" 
                       alt="Puzzle or board game." fluid
                     />
                 </Col>
