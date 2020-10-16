@@ -19,7 +19,7 @@ function App() {
         <br/> 
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={AboutUs} />
-        <Route path="/viewlog" exact component={ExercisesList} />
+        <Route path="/viewlogs" exact component={ExercisesList} />
         <Route path="/edit/:id" component={EditExercise} />
         <Route path="/create" component={CreateExercise} />
         <Route path="/user" component={CreateUser} />

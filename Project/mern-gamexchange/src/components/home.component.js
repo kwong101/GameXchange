@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
 
-export default class AboutUs extends Component {
+export default class Home extends Component {
 
     render() {
       return (
