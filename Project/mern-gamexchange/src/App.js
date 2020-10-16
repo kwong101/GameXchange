@@ -11,7 +11,6 @@ import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
 
-
 function App() {
   return (
     <Router>
