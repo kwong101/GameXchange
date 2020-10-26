@@ -11,6 +11,10 @@ import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
 
+var passport = require("passport"); // at header
+
+
+
 function App() {
   return (
     <Router>
@@ -56,13 +60,9 @@ function App() {
            <span class="button-label">Sign in with Google</span>
          </div>
       </a>
-
     </Router>
-
-
   );
 }
-
 
 
 export default App;
