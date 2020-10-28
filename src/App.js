@@ -13,6 +13,7 @@ import Home from "./components/home.component";
 
 var passport = require("passport"); // at header
 
+const url = "http://localhost:5000/auth/google";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/create" component={CreateExercise} />
         <Route path="/user" component={CreateUser} />
       </div>
-      <a href="/auth/google" class="button">
+      <a href={url} class="button">
                 <div>
                   <span class="svgIcon t-popup-svg">
                     <svg
@@ -56,9 +57,9 @@ function App() {
                         />
                       </g>
                     </svg>
-             </span>
-           <span class="button-label">Sign in with Google</span>
-         </div>
+                  </span>
+                  <span class="button-label">Sign in with Google</span>
+                </div>
       </a>
     </Router>
   );

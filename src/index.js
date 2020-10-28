@@ -12,10 +12,10 @@ import { BrowserRouter } from "react-router-dom";
 
 
 ReactDOM.render( <BrowserRouter>
-                           <Switch>
-                            <Route path="/" component={App} />
-                           </Switch>
-                          </BrowserRouter>, document.getElementById('root'));
+    <Switch>
+        <Route path="/" component={App} />
+    </Switch>
+    </BrowserRouter>, document.getElementById('root'));
 register();
 
 
