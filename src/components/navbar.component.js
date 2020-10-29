@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
 
-
 const logo = require('../ge_logo.svg');
 
-
-
 export default class MyNavbar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +35,6 @@ export default class MyNavbar extends Component {
             />{' '}
             GameXchange
           </Navbar.Brand>
-        
         </Navbar>
 
         {/* 
@@ -66,17 +61,13 @@ export default class MyNavbar extends Component {
             </li>
           </ul>
 
-
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form>
 
-
         </div>
-
       </nav>
-    
-      );
+    );
   }
 }
