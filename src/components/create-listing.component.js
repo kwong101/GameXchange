@@ -25,8 +25,7 @@ export default class CreateExercise extends Component {
 
         this.state = {
             title: '',
-            owner: '',
-            description: '',
+            description: '', // owner was removed. should be whoever is logged in
             condition: '',
             location: '',
             price: '',
