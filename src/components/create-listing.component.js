@@ -119,8 +119,7 @@ export default class CreateListing extends Component {
         .then(res => console.log(res.data));
 
         // take user to the listing page for what they posted
-        window.location = '/';
-        window.location = '/listings/'+listing._id;
+        window.location = '/listings/';
     }
 
     render() {
