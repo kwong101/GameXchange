@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateExercise extends Component {
+export default class CreateListing extends Component {
     constructor(props) {
         super(props);
 
@@ -118,100 +118,101 @@ export default class CreateExercise extends Component {
         axios.post('http://localhost:5000/listings/add', listing)
         .then(res => console.log(res.data));
 
-        // take person back to home page (list of exercises)
+        // take user to the listing page for what they posted
         window.location = '/';
+        window.location = '/listings/'+listing._id;
     }
 
     render() {
         return (
         <div>
-          <h3>Create New Listing </h3>
-          <form onSubmit={this.onSubmit}>
+            <h3>Create New Listing </h3>
+            <form onSubmit={this.onSubmit}>
 
             <div className="form-group"> 
-              <label>Title: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.title}
-                  onChange={this.onChangeTitle}
-                  />
+                <label>Title: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.title}
+                    onChange={this.onChangeTitle}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Owner: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.owner}
-                  onChange={this.onChangeOwner}
-                  />
+                <label>Owner: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.owner}
+                    onChange={this.onChangeOwner}
+                    />
             </div>
 
             <div className="form-group"> 
-              <label>Description: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  />
+                <label>Description: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.description}
+                    onChange={this.onChangeDescription}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Condition: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.condition}
-                  onChange={this.onChangeCondition}
-                  />
+                <label>Condition: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.condition}
+                    onChange={this.onChangeCondition}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Location: </label>
-             <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.location}
-                  onChange={this.onChangeLocation}
-                  />
+                <label>Location: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.location}
+                    onChange={this.onChangeLocation}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Price: </label>
-              <input  type="number"
-                  required
-                  className="form-control"
-                  value={this.state.price}
-                  onChange={this.onChangePrice}
-                  />
+                <label>Price: </label>
+                <input  type="number"
+                    required
+                    className="form-control"
+                    value={this.state.price}
+                    onChange={this.onChangePrice}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Category: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.category}
-                  onChange={this.onChangeCategory}
-                  />
+                <label>Category: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.category}
+                    onChange={this.onChangeCategory}
+                    />
             </div>
 
             <div className="form-group">
-              <label>Images: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.images}
-                  onChange={this.onChangeImages}
-                  />
+                <label>Images: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.images}
+                    onChange={this.onChangeImages}
+                    />
             </div>
     
             <div className="form-group">
-              <input type="submit" value="Post Listing" className="btn btn-primary" />
+                <input type="submit" value="Post Listing" className="btn btn-primary" />
             </div>
-          </form>
+            </form>
         </div>
         )
     }
