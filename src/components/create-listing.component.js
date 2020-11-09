@@ -118,7 +118,9 @@ export default class CreateListing extends Component {
         axios.post('http://localhost:5000/listings/add', listing)
         .then(res => console.log(res.data));
 
-        // take user to the listing page for what they posted
+        // take user to the listing page for  what they posted
+        // this doesnt work yet
+        // FIXME: 
         window.location = '/listings/';
     }
 
