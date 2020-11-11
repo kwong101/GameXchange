@@ -35,12 +35,7 @@ const listingSchema = new Schema({
     required: true,
   },
 
-  up_for_trade: {
-    type: Boolean,
-    required: true,
-  },
-
-  game_category: {
+  category: {
     type: String,
     required: true,
   },

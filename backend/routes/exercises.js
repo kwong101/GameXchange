@@ -9,16 +9,24 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-  const username = req.body.username;
+  const title = req.body.title;
   const description = req.body.description;
-  const duration = Number(req.body.duration);
-  const date = Date.parse(req.body.date);
+  const owner = req.body.owner;
+  const condition = req.body.condition;
+  const location = req.body.location;
+  const price = req.body.price;
+  const category = req.body.game_category;
+  const images = req.body.images;
 
   const newExercise = new Exercise({
-    username,
+    title,
     description,
-    duration,
-    date,
+    owner,
+    condition,
+    location,
+    price,
+    game_category,
+    images,
   });
 
   newExercise.save()

@@ -6,10 +6,12 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Navbar from "./components/navbar.component"
 import ExercisesList from "./components/exercises-list.component";
 import EditExercise from "./components/edit-exercise.component";
-import CreateExercise from "./components/create-exercise.component";
+import CreateListing from "./components/create-listing.component";
 import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
+import ViewListing from './components/view-listing.component';
+import Browse from './components/browse.component';
 
 var passport = require("passport"); // at header
 
@@ -34,10 +36,14 @@ function App() {
         {/* FIXME: How to render more than one? */}
         <Route exact path="/" component={Home} />
         <Route path="/about" exact component={AboutUs} />
+        {/* FIXME: remove viewlogs eventually */}
         <Route path="/viewlogs" exact component={ExercisesList} />
         <Route path="/edit/:id" component={EditExercise} />
-        <Route path="/create" exact component={CreateExercise} />
-        <Route path="/user" exact component={CreateUser} />
+
+        <Route path="/create" component={CreateListing} />
+        <Route path="/user" component={CreateUser} />
+        <Route path="/listings" exact component={Browse} />
+        <Route path="/listings/:id" component={ViewListing} />
       </div>
       
       {/* this is all for the sign in with google vvvv */}
