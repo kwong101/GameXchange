@@ -109,13 +109,13 @@ export default class CreateListing extends Component {
 
         this.setState({
             images: e.target.value
-         })
+        })
     }
 
     onChangeMulterImage(e) {
-      this.setState({
+        this.setState({
         multerImage: e.target.files[0]
-      });
+        });
     }
 
 
@@ -140,24 +140,24 @@ export default class CreateListing extends Component {
         .then(res => console.log(res.data));
 
 
-       let imageObj = {};
+        let imageObj = {};
 
-       let imageFormObj = new FormData();
+        let imageFormObj = new FormData();
 
-       imageFormObj.append("imageName", "multer-image-" + Date.now());
-       imageFormObj.append("imageData", this.state.multerImage);
+        imageFormObj.append("imageName", "multer-image-" + Date.now());
+        imageFormObj.append("imageData", this.state.multerImage);
 
 
 
         axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
             .then((data) => {
-              if (data.data.success) {
+                if (data.data.success) {
                 alert("Image has been successfully uploaded using multer");
 
-              }
+            }
             })
             .catch((err) => {
-              alert("Error while uploading image using multer");
+                alert("Error while uploading image using multer");
 
             });
 
@@ -168,18 +168,18 @@ export default class CreateListing extends Component {
         window.location = '/listings/';
     }
 
-  setDefaultImage(uploadType) {
+    setDefaultImage(uploadType) {
 
-      this.setState({
+        this.setState({
             multerImage: DefaultImg
-      });
+        });
 
-  }
+    }
 
 
   // function to upload image once it has been captured
 
-  uploadImage(e, method) {
+    uploadImage(e, method) {
 //      let imageObj = {};
 //
 //      let imageFormObj = new FormData();
@@ -192,9 +192,9 @@ export default class CreateListing extends Component {
 
       // stores a readable instance of
       // the image being uploaded using multer
-      this.setState({
+        this.setState({
         multerImage: URL.createObjectURL(e.target.files[0])
-      });
+        });
 //
 //      axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
 //        .then((data) => {
@@ -207,7 +207,7 @@ export default class CreateListing extends Component {
 //          alert("Error while uploading image using multer");
 //          this.setDefaultImage("multer");
 //        });
-   }
+    }
 
 
     render() {
@@ -279,8 +279,8 @@ export default class CreateListing extends Component {
             </div>
 
 
-           <div className="form-group">
-               <label>Category: </label>
+            <div className="form-group">
+                <label>Category: </label>
                 <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
                             <option category="Select one">Select one</option>
                             <option category="Puzzle">Puzzle</option>
@@ -288,26 +288,26 @@ export default class CreateListing extends Component {
                             <option category="Card Game">Card Game</option>
                             <option category="Other">Other</option>
                         </select>
-           </div>
+            </div>
 
-            <div className="form-group">
-              <label>Images: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.images}
-                  onChange={this.onChangeImages}
-                  />
+                <div className="form-group">
+                <label>Images: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.images}
+                    onChange={this.onChangeImages}
+                    />
             </div>
 
             <div className="image-container">
-              <label>Images: </label>
-              <input  type="file"
-                  required
-                  className="process__upload-btn"
+                <label>Images: </label>
+                <input  type="file"
+                    required
+                    className="process__upload-btn"
 
-                  onChange={this.onChangeMulterImage}
-                  />
+                    onChange={this.onChangeMulterImage}
+                    />
             </div>
 
             <div className="form-group">
