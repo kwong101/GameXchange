@@ -290,16 +290,6 @@ export default class CreateListing extends Component {
                         </select>
             </div>
 
-                <div className="form-group">
-                <label>Images: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.images}
-                    onChange={this.onChangeImages}
-                    />
-            </div>
-
             <div className="image-container">
                 <label>Images: </label>
                 <input  type="file"

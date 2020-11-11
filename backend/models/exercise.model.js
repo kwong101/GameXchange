@@ -40,13 +40,6 @@ const exerciseSchema = new Schema({
     required: true,
   },
 
-  images: {
-    type: Buffer,
-    required: true,
-  }
-
-  // needa delete images here lmao
-
 }, {
   timestamps: true,
 });

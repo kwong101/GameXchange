@@ -14,7 +14,7 @@ const ImageSchema = new Schema({
     }
 
     }, {
-      timestamps: true,
+        timestamps: true,
     });
 
     // gotta add in product ID over here!!!!!!
