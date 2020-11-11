@@ -59,7 +59,7 @@ export default class MyNavbar extends Component {
               <Link to="/create" className="nav-link">Create Listing</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/viewlogs" className="nav-link">View Logs</Link>
+              <Link to="/listings" className="nav-link">Browse</Link>
             </li>
             <li className="navbar-item">
               <Link to="/user" className="nav-link">Create User</Link>

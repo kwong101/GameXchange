@@ -10,6 +10,8 @@ import CreateListing from "./components/create-listing.component";
 import CreateUser from "./components/create-user.component";
 import AboutUs from "./components/about-us.component";
 import Home from "./components/home.component";
+import ViewListing from './components/view-listing.component';
+import Browse from './components/browse.component';
 
 var passport = require("passport"); // at header
 
@@ -24,10 +26,14 @@ function App() {
         <br/> 
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={AboutUs} />
+        {/* FIXME: remove viewlogs eventually */}
         <Route path="/viewlogs" exact component={ExercisesList} />
         <Route path="/edit/:id" component={EditExercise} />
         <Route path="/create" component={CreateListing} />
         <Route path="/user" component={CreateUser} />
+        <Route path="/listings" exact component={Browse} />
+        <Route path="/listings/:id" component={ViewListing} />
+
       </div>
       <a href={url} class="button">
                 <div>
