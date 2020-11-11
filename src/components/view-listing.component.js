@@ -71,12 +71,12 @@ export default class ViewListing extends Component {
         axios.get('http://localhost:5000/listings/'+this.props.match.params.id)
             .then(response => {
                 this.setState({ 
-                  title: response.data.title,
-                  description: response.data.description,
-                  owner: response.data.owner,
-                  condition: response.data.condition,
-                  location: response.data.location,
-                  price: response.data.price
+                    title: response.data.title,
+                    description: response.data.description,
+                    owner: response.data.owner,
+                    condition: response.data.condition,
+                    location: response.data.location,
+                    price: response.data.price
                 })
             })
             .catch((error) => {

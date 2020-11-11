@@ -216,7 +216,7 @@ export default class CreateListing extends Component {
             <h3>Create New Listing </h3>
             <form onSubmit={this.onSubmit}>
 
-            <div className="form-group"> 
+            <div className="form-group">
                 <label>Title: </label>
                 <input  type="text"
                     required
@@ -236,7 +236,7 @@ export default class CreateListing extends Component {
                     />
             </div>
 
-            <div className="form-group"> 
+            <div className="form-group">
                 <label>Description: </label>
                 <input  type="text"
                     required
@@ -248,12 +248,14 @@ export default class CreateListing extends Component {
 
             <div className="form-group">
                 <label>Condition: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.condition}
-                    onChange={this.onChangeCondition}
-                    />
+                <select defaultValue="Select one" value={this.state.condition} onChange={this.onChangeCondition}>
+                            <option condition="Select one">Select one</option>
+                            <option condition="New">New</option>
+                            <option condition="Excellent">Excellent</option>
+                            <option condition="Great">Great</option>
+                            <option condition="Good">Good</option>
+                            <option condition="Worn">Worn</option>
+                        </select>
             </div>
 
             <div className="form-group">
@@ -276,15 +278,17 @@ export default class CreateListing extends Component {
                     />
             </div>
 
-            <div className="form-group">
-                <label>Category: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.category}
-                    onChange={this.onChangeCategory}
-                    />
-            </div>
+
+           <div className="form-group">
+               <label>Category: </label>
+                <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
+                            <option category="Select one">Select one</option>
+                            <option category="Puzzle">Puzzle</option>
+                            <option category="Board Game">Board Game</option>
+                            <option category="Card Game">Card Game</option>
+                            <option category="Other">Other</option>
+                        </select>
+           </div>
 
             <div className="form-group">
               <label>Images: </label>
