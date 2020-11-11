@@ -15,11 +15,15 @@ export default class CreateListing extends Component {
         this.onChangeOwner = this.onChangeOwner.bind(this);
 
         this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeCondition = this.onChangeCondition.bind(this);
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeImages = this.onChangeImages.bind(this);
+
+        
+            
+        this.onChangeCondition = this.onChangeCondition.bind(this); 
+
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -68,7 +72,7 @@ export default class CreateListing extends Component {
     onChangeCondition(e) {
         this.setState({
             condition: e.target.value
-        })
+        });
     }
 
     onChangeLocation(e) {
@@ -118,9 +122,11 @@ export default class CreateListing extends Component {
         axios.post('http://localhost:5000/listings/add', listing)
         .then(res => console.log(res.data));
 
-        // take user to the listing page for  what they posted
-        // this doesnt work yet
-        // FIXME: 
+        // eventually, we WANT to take user to the listing page 
+        // for what they just posted, but don't know how atm
+        // low priority 
+        // FIXME: this doesnt work yet
+        // We just send them back to all listings page instead
         window.location = '/listings/';
     }
 
@@ -140,34 +146,39 @@ export default class CreateListing extends Component {
                     />
             </div>
 
-            <div className="form-group">
-                <label>Owner: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.owner}
-                    onChange={this.onChangeOwner}
-                    />
-            </div>
-
             <div className="form-group"> 
                 <label>Description: </label>
-                <input  type="text"
+                {/* <input  type="text"
                     required
                     className="form-control"
                     value={this.state.description}
                     onChange={this.onChangeDescription}
-                    />
+                    /> */}
+                <textarea value={this.state.description} onChange={this.onChangeDescription} />
             </div>
 
             <div className="form-group">
                 <label>Condition: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.condition}
-                    onChange={this.onChangeCondition}
-                    />
+{                   /*                 
+                        Just a text box 
+                        <input  type="text"
+                        required
+                        className="form-control"
+                        value={this.state.condition}
+                        onChange={this.onChangeCondition}
+                    /> */}
+
+                    {/* 
+                        FIXME: using regular react form, we change this later
+                    */}
+                    <select condition={this.state.condition} onChange={this.onChangeCondition}>
+                        <option condition="New">New</option>
+                        <option condition="Card Game">Card Game</option>
+                        <option condition=""></option>
+                        <option condition="Good">Good</option>
+                        <option condition="Worn">Worn</option>
+                    </select>
+
             </div>
 
             <div className="form-group">
@@ -192,12 +203,19 @@ export default class CreateListing extends Component {
 
             <div className="form-group">
                 <label>Category: </label>
-                <input  type="text"
+                {/* <input  type="text"
                     required
                     className="form-control"
                     value={this.state.category}
                     onChange={this.onChangeCategory}
-                    />
+                    /> */}
+
+                    <select category={this.state.category} onChange={this.onChangeCategory}>
+                        <option category="Puzzle">Puzzle</option>
+                        <option category="Board Game">Board Game</option>
+                        <option category="Card Game">Card Game</option>
+                        <option category="Other">Other</option>
+                    </select>
             </div>
 
             <div className="form-group">
