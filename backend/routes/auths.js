@@ -23,9 +23,9 @@ router.get(
 		var name = req.user.name;
         var email = req.user.email;
         const newUser = new User({name, email});
-//        newUser.save()
-//            .then(() => res.json('User added!'))
-//            .catch(err => res.status(400).json('Error: ' + err));
+        newUser.save()
+            .then(() => res.json('User added!'))
+            .catch(err => res.status(400).json('Error: ' + err));
 
 
 		res.redirect("http://localhost:3000?token=" + token);

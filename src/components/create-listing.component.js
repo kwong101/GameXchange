@@ -27,20 +27,15 @@ export default class CreateListing extends Component {
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onChangeImages = this.onChangeImages.bind(this);
 //        //new
 
 //        this.multerImages = this.onChangeMulterImages.bind(this);
         this.onChangeMulterImage = this.onChangeMulterImage.bind(this)
-
-        this.imageForms = [];
         this.onSubmit = this.onSubmit.bind(this);
-
-
 
         this.state = {
             title: '',
-            description: '', // owner was removed. should be whoever is logged in
+            description: '',
             condition: '',
             location: '',
             price: '',
@@ -105,12 +100,6 @@ export default class CreateListing extends Component {
         })
     }
 
-    onChangeImages(e) {
-
-        this.setState({
-            images: e.target.value
-         })
-    }
 
     onChangeMulterImage(e) {
       this.setState({
@@ -118,6 +107,9 @@ export default class CreateListing extends Component {
       });
     }
 
+
+    // on submit, create listing object and then send to listing db
+    // create image object and send to image db
 
     onSubmit(e) {
         e.preventDefault();
@@ -129,8 +121,7 @@ export default class CreateListing extends Component {
             condition: this.state.condition,
             location: this.state.location,
             price: this.state.price,
-            category: this.state.category,
-            images: this.state.images
+            category: this.state.category
         }
 
         // we link this after finishing some front end stuff
@@ -167,14 +158,6 @@ export default class CreateListing extends Component {
         // take user to the listing page for what they posted
         window.location = '/listings/';
     }
-
-  setDefaultImage(uploadType) {
-
-      this.setState({
-            multerImage: DefaultImg
-      });
-
-  }
 
 
   // function to upload image once it has been captured
@@ -289,16 +272,6 @@ export default class CreateListing extends Component {
                             <option category="Other">Other</option>
                         </select>
            </div>
-
-            <div className="form-group">
-              <label>Images: </label>
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={this.state.images}
-                  onChange={this.onChangeImages}
-                  />
-            </div>
 
             <div className="image-container">
               <label>Images: </label>
