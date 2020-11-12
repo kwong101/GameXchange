@@ -39,15 +39,15 @@ export default class CreateListing extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            title: '',
-            description: '',
-            condition: '',
-            location: '',
-            price: '',
-            category: '',
-            images: '',
-            multerImage: '',
-            listingId: ''
+          title: '',
+          description: '',
+          condition: '',
+          location: '',
+          price: '',
+          category: '',
+          images: '',
+          multerImage: '',
+          listingId: ''
         }
     }
 
@@ -315,7 +315,7 @@ export default class CreateListing extends Component {
                   <Form.Group controlId="formGroupTitle">
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text" placeholder="Title" 
-                      value={this.state.title}
+                      value={this.state.title || ''} // (undefined || '') = ''
                       onChange={this.onChangeTitle}
                     />
                   </Form.Group>
@@ -323,7 +323,7 @@ export default class CreateListing extends Component {
                   <Form.Group controlId="formGroupOwner">
                     <Form.Label>Owner</Form.Label>
                     <Form.Control type="text" placeholder="Owner" 
-                      value={this.state.owner}
+                      value={this.state.owner || ''} // (undefined || '') = ''
                       onChange={this.onChangeOwner}
                     />
                   </Form.Group>
@@ -332,7 +332,7 @@ export default class CreateListing extends Component {
                     <Form.Label>Description</Form.Label>
                     <Form.Control as="textarea" placeholder="Description" 
                       rows={4}
-                      value={this.state.description}
+                      value={this.state.description || ''} // (undefined || '') = ''
                       onChange={this.onChangeDescription}
                     />
                   </Form.Group>
@@ -340,7 +340,7 @@ export default class CreateListing extends Component {
                   <Form.Group controlId="formGroupCondition">
                     <Form.Label>Condition</Form.Label>
                     <Form.Control as="select" custom 
-                      value={this.state.condition}
+                      value={this.state.condition || ''} // (undefined || '') = ''
                       onChange={this.onChangeCondition}
                     >
                       <option>Brand new</option>
@@ -354,7 +354,7 @@ export default class CreateListing extends Component {
                   <Form.Group controlId="formGroupLocation">
                     <Form.Label>Location</Form.Label>
                     <Form.Control type="text" placeholder="Location" 
-                      value={this.state.location}
+                      value={this.state.location || ''} // (undefined || '') = ''
                       onChange={this.onChangeLocation}
                     />
                   </Form.Group>
@@ -367,7 +367,7 @@ export default class CreateListing extends Component {
                         <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control type="text" placeholder="Price" 
-                        value={this.state.price}
+                        value={this.state.price || ''} // (undefined || '') = ''
                         onChange={this.onChangePrice}
                       />
                     </InputGroup>
@@ -376,7 +376,7 @@ export default class CreateListing extends Component {
                   <Form.Group controlId="formGroupCategory">
                     <Form.Label>Category</Form.Label>
                     <Form.Control as="select" custom 
-                      value={this.state.category}
+                      value={this.state.category || ''} // (undefined || '') = ''
                       onChange={this.onChangeCategory}
                     >
                       <option>Puzzle</option>
