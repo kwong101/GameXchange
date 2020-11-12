@@ -3,6 +3,11 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import DefaultImg from '../default-img.jpg';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 
 // base api url being used
@@ -207,6 +212,8 @@ export default class CreateListing extends Component {
     render() {
         return (
         <div>
+            {/* 
+              old regular react render code here
             <h3>Create New Listing </h3>
             <form onSubmit={this.onSubmit}>
 
@@ -297,13 +304,13 @@ export default class CreateListing extends Component {
             <div className="form-group">
                 <input type="submit" value="Post Listing" className="btn btn-primary" />
             </div>
-            </form>
-        </div>
-        )
+            </form> */}
+        
 
-            {/* <Container>
+          <Container>
             <Jumbotron>
                 <h1 className="create-listing-header">Create New Listing</h1>
+
                 <Form onSubmit={this.onSubmit}>
                   <Form.Group controlId="formGroupTitle">
                     <Form.Label>Title</Form.Label>
@@ -312,12 +319,16 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeTitle}
                     />
                   </Form.Group>
-                  {/* <Form.Group controlId="formGroupPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                  </Form.Group> */}
 
-                  {/* <Form.Group controlId="formGroupDescription">
+                  <Form.Group controlId="formGroupOwner">
+                    <Form.Label>Owner</Form.Label>
+                    <Form.Control type="text" placeholder="Owner" 
+                      value={this.state.owner}
+                      onChange={this.onChangeOwner}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formGroupDescription">
                     <Form.Label>Description</Form.Label>
                     <Form.Control as="textarea" placeholder="Description" 
                       rows={4}
@@ -325,6 +336,7 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeDescription}
                     />
                   </Form.Group>
+
                   <Form.Group controlId="formGroupCondition">
                     <Form.Label>Condition</Form.Label>
                     <Form.Control as="select" custom 
@@ -338,6 +350,7 @@ export default class CreateListing extends Component {
                       <option>Worn</option>
                     </Form.Control>
                   </Form.Group>
+
                   <Form.Group controlId="formGroupLocation">
                     <Form.Label>Location</Form.Label>
                     <Form.Control type="text" placeholder="Location" 
@@ -345,20 +358,20 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeLocation}
                     />
                   </Form.Group>
-                    <Form.Group className="input-group" controlId="formGroupPrice">
-                      <Form.Label>Price</Form.Label>
-                      
-                      <InputGroup>
-                        <InputGroup.Prepend>
-                          <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <Form.Control type="text" placeholder="Price" 
-                          value={this.state.price}
-                          onChange={this.onChangePrice}
-                        />
-                      </InputGroup>
-                    </Form.Group>
+
+                  <Form.Group className="input-group" controlId="formGroupPrice">
+                    <Form.Label>Price</Form.Label>
                     
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control type="text" placeholder="Price" 
+                        value={this.state.price}
+                        onChange={this.onChangePrice}
+                      />
+                    </InputGroup>
+                  </Form.Group>
                   
                   <Form.Group controlId="formGroupCategory">
                     <Form.Label>Category</Form.Label>
@@ -372,6 +385,7 @@ export default class CreateListing extends Component {
                       <option>Other</option>
                     </Form.Control>
                   </Form.Group>
+
                   <Form.Group controlId="formGroupImages">
                     <Form.File 
                       className="process__upload-btn"
@@ -380,14 +394,16 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeMulterImage}
                     />
                   </Form.Group>
+
                   <Button variant="primary" type="submit" className="btn btn-primary">
                     Post Listing
                   </Button>
                 </Form>
             </Jumbotron>
-          </Container> */}
+          </Container>
 
-
+          </div>
+        )
         
     }
 }
