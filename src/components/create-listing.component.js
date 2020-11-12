@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
+//import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import DefaultImg from '../default-img.jpg';
+//import DefaultImg from '../default-img.jpg';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+//import { Link } from 'react-router-dom';
+
 
 
 // base api url being used
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
 
+
+/* const Listing = props => (
+  // returns a Table Row
+  <tr>
+      <td>{props.listing.title}</td>
+      <td>{props.listing.description}</td>
+      <td>{props.listing.condition}</td>
+      <td>{props.listing._id}</td>
+
+      <td>  
+      <Link to={"/edit/"+props.listing._id}>
+          <button type="button">
+          edit
+          </button>
+      </Link>
+      |  
+      <button onClick={() => { props.deleteListing(props.listing._id) }}>
+          delete
+      </button>
+      </td>
+  </tr>
+) */
 
 export default class CreateListing extends Component {
 
@@ -150,7 +174,7 @@ export default class CreateListing extends Component {
 //        axios.get('http://localhost:5000/listings/dootdoot', this.productTitle, listing)
 //        .then(res => console.log(res.data))
 
-        let imageObj = {};
+        //let imageObj = {};
 
         let imageFormObj = new FormData();
 
@@ -172,7 +196,8 @@ export default class CreateListing extends Component {
             });
 
         // take user to the listing page for what they posted
-        window.location = '/listings/';
+          window.location = '/listings/';
+        
     }
 
 

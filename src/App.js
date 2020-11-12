@@ -13,7 +13,7 @@ import Home from "./components/home.component";
 import ViewListing from './components/view-listing.component';
 import Browse from './components/browse.component';
 
-var passport = require("passport"); // at header
+//var passport = require("passport"); // at header
 
 // creating constant to use for the sign in with google button
 const auth_url = "http://localhost:5000/auth/google";
