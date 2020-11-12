@@ -321,8 +321,6 @@ export default class CreateListing extends Component {
             <Jumbotron>
                 <h1 className="create-listing-header">Create New Listing</h1>
                 <Form onSubmit={this.onSubmit}>
-
-
                   <Form.Group controlId="formGroupTitle">
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text" placeholder="Title" 
@@ -343,7 +341,6 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeDescription}
                     />
                   </Form.Group>
-
                   <Form.Group controlId="formGroupCondition">
                     <Form.Label>Condition</Form.Label>
                     <Form.Control as="select" custom 
@@ -357,7 +354,6 @@ export default class CreateListing extends Component {
                       <option>Worn</option>
                     </Form.Control>
                   </Form.Group>
-
                   <Form.Group controlId="formGroupLocation">
                     <Form.Label>Location</Form.Label>
                     <Form.Control type="text" placeholder="Location" 
@@ -365,7 +361,6 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeLocation}
                     />
                   </Form.Group>
-
                     <Form.Group className="input-group" controlId="formGroupPrice">
                       <Form.Label>Price</Form.Label>
                       
@@ -379,10 +374,8 @@ export default class CreateListing extends Component {
                         />
                       </InputGroup>
                     </Form.Group>
-
                     
                   
-
                   <Form.Group controlId="formGroupCategory">
                     <Form.Label>Category</Form.Label>
                     <Form.Control as="select" custom 
@@ -395,7 +388,6 @@ export default class CreateListing extends Component {
                       <option>Other</option>
                     </Form.Control>
                   </Form.Group>
-
                   <Form.Group controlId="formGroupImages">
                     <Form.File 
                       className="process__upload-btn"
@@ -404,12 +396,9 @@ export default class CreateListing extends Component {
                       onChange={this.onChangeMulterImage}
                     />
                   </Form.Group>
-
                   <Button variant="primary" type="submit" className="btn btn-primary">
                     Post Listing
                   </Button>
-
-
                 </Form>
             </Jumbotron>
           </Container> */}
