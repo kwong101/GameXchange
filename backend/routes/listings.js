@@ -15,7 +15,6 @@ router.route('/add').post((req, res) => {
     const location = req.body.location;
     const price = req.body.price;
     const category = req.body.category;
-    const images = req.body.images;
 
     const newListing = new Listing({
       title,
@@ -24,8 +23,7 @@ router.route('/add').post((req, res) => {
       condition,
       location,
       price,
-      category,
-      images,
+      category
     });
 
   newListing.save()
@@ -56,7 +54,6 @@ router.route('/update/:id').post((req, res) => {
       listing.location = req.body.location;
       listing.price = req.body.price;
       listing.category = req.body.category;
-      listing.images = req.body.images;
       listing.date = Date.parse(req.body.date);
 
       listing.save()

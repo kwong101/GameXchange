@@ -47,16 +47,16 @@ function App() {
       </div>
       
       {/* this is all for the sign in with google vvvv */}
-      <a href={auth_url} class="button">
+      <a href={auth_url} className="button">
         <div>
-          <span class="svgIcon t-popup-svg">
+          <span className="svgIcon t-popup-svg">
             <svg
-              class="svgIcon-use"
+              className="svgIcon-use"
               width="25"
               height="37"
               viewBox="0 0 25 25"
             >
-              <g fill="none" fill-rule="evenodd">
+              <g fill="none" fillRule="evenodd">
                 <path
                   d="M20.66 12.693c0-.603-.054-1.182-.155-1.738H12.5v3.287h4.575a3.91 3.91 0 0 1-1.697 2.566v2.133h2.747c1.608-1.48 2.535-3.65 2.535-6.24z"
                   fill="#4285F4"
@@ -76,7 +76,7 @@ function App() {
               </g>
             </svg>
           </span>
-          <span class="button-label">Sign in with Google</span>
+          <span className="button-label">Sign in with Google</span>
         </div>
       </a>
       

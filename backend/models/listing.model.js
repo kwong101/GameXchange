@@ -40,10 +40,6 @@ const listingSchema = new Schema({
     required: true,
   },
 
-  images: {
-    type: Buffer,
-    required: true,
-  }
 
 }, {
   timestamps: true,
