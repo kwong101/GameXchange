@@ -102,9 +102,9 @@ export default class CreateListing extends Component {
 
 
     onChangeMulterImage(e) {
-      this.setState({
+        this.setState({
         multerImage: e.target.files[0]
-      });
+        });
     }
 
 
@@ -131,24 +131,24 @@ export default class CreateListing extends Component {
         .then(res => console.log(res.data));
 
 
-       let imageObj = {};
+        let imageObj = {};
 
-       let imageFormObj = new FormData();
+        let imageFormObj = new FormData();
 
-       imageFormObj.append("imageName", "multer-image-" + Date.now());
-       imageFormObj.append("imageData", this.state.multerImage);
+        imageFormObj.append("imageName", "multer-image-" + Date.now());
+        imageFormObj.append("imageData", this.state.multerImage);
 
 
 
         axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
             .then((data) => {
-              if (data.data.success) {
+                if (data.data.success) {
                 alert("Image has been successfully uploaded using multer");
 
-              }
+            }
             })
             .catch((err) => {
-              alert("Error while uploading image using multer");
+                alert("Error while uploading image using multer");
 
             });
 
@@ -162,7 +162,7 @@ export default class CreateListing extends Component {
 
   // function to upload image once it has been captured
 
-  uploadImage(e, method) {
+    uploadImage(e, method) {
 //      let imageObj = {};
 //
 //      let imageFormObj = new FormData();
@@ -175,9 +175,9 @@ export default class CreateListing extends Component {
 
       // stores a readable instance of
       // the image being uploaded using multer
-      this.setState({
+        this.setState({
         multerImage: URL.createObjectURL(e.target.files[0])
-      });
+        });
 //
 //      axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
 //        .then((data) => {
@@ -190,7 +190,7 @@ export default class CreateListing extends Component {
 //          alert("Error while uploading image using multer");
 //          this.setDefaultImage("multer");
 //        });
-   }
+    }
 
 
     render() {
@@ -262,8 +262,8 @@ export default class CreateListing extends Component {
             </div>
 
 
-           <div className="form-group">
-               <label>Category: </label>
+            <div className="form-group">
+                <label>Category: </label>
                 <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
                             <option category="Select one">Select one</option>
                             <option category="Puzzle">Puzzle</option>
@@ -271,16 +271,16 @@ export default class CreateListing extends Component {
                             <option category="Card Game">Card Game</option>
                             <option category="Other">Other</option>
                         </select>
-           </div>
+            </div>
 
             <div className="image-container">
-              <label>Images: </label>
-              <input  type="file"
-                  required
-                  className="process__upload-btn"
+                <label>Images: </label>
+                <input  type="file"
+                    required
+                    className="process__upload-btn"
 
-                  onChange={this.onChangeMulterImage}
-                  />
+                    onChange={this.onChangeMulterImage}
+                    />
             </div>
 
             <div className="form-group">
@@ -289,5 +289,105 @@ export default class CreateListing extends Component {
             </form>
         </div>
         )
+
+            {/* <Container>
+            <Jumbotron>
+                <h1 className="create-listing-header">Create New Listing</h1>
+                <Form onSubmit={this.onSubmit}>
+
+
+                  <Form.Group controlId="formGroupTitle">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control type="text" placeholder="Title" 
+                      value={this.state.title}
+                      onChange={this.onChangeTitle}
+                    />
+                  </Form.Group>
+                  {/* <Form.Group controlId="formGroupPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" />
+                  </Form.Group> */}
+
+                  {/* <Form.Group controlId="formGroupDescription">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control as="textarea" placeholder="Description" 
+                      rows={4}
+                      value={this.state.description}
+                      onChange={this.onChangeDescription}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formGroupCondition">
+                    <Form.Label>Condition</Form.Label>
+                    <Form.Control as="select" custom 
+                      value={this.state.condition}
+                      onChange={this.onChangeCondition}
+                    >
+                      <option>Brand new</option>
+                      <option>Excellent</option>
+                      <option>Great</option>
+                      <option>Good</option>
+                      <option>Worn</option>
+                    </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group controlId="formGroupLocation">
+                    <Form.Label>Location</Form.Label>
+                    <Form.Control type="text" placeholder="Location" 
+                      value={this.state.location}
+                      onChange={this.onChangeLocation}
+                    />
+                  </Form.Group>
+
+                    <Form.Group className="input-group" controlId="formGroupPrice">
+                      <Form.Label>Price</Form.Label>
+                      
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control type="text" placeholder="Price" 
+                          value={this.state.price}
+                          onChange={this.onChangePrice}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+
+                    
+                  
+
+                  <Form.Group controlId="formGroupCategory">
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control as="select" custom 
+                      value={this.state.category}
+                      onChange={this.onChangeCategory}
+                    >
+                      <option>Puzzle</option>
+                      <option>Board game</option>
+                      <option>Card Game</option>
+                      <option>Other</option>
+                    </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group controlId="formGroupImages">
+                    <Form.File 
+                      className="process__upload-btn"
+                      id="file-upload"
+                      label="Images"
+                      onChange={this.onChangeMulterImage}
+                    />
+                  </Form.Group>
+
+                  <Button variant="primary" type="submit" className="btn btn-primary">
+                    Post Listing
+                  </Button>
+
+
+                </Form>
+            </Jumbotron>
+          </Container> */}
+
+
+        
     }
 }
