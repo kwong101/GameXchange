@@ -138,8 +138,8 @@ export default class CreateListing extends Component {
         .then((data) => {
             if (data.data.success) {
                 alert("listing added woop");
+                console.log("Listing post to listings/add success");
                 console.log(data._id);
-//
             }
         });
 

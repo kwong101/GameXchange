@@ -126,7 +126,8 @@ export default class ViewListing extends Component {
                     {/* 
                     We still need to implement this exerciseList method
                     it's going to return the rows of the table
-                    */}  
+                    */} 
+                    <tr> 
                     <td>{ this.state.title }</td>
                     <td>{ this.state.description }</td>
                     <td>{ this.state.condition }</td>
@@ -141,6 +142,7 @@ export default class ViewListing extends Component {
                         delete
                     </button>
                     </td>
+                    </tr>
                 </tbody>
                 </table>
             </div>
