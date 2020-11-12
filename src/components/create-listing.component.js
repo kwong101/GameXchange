@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
-
-/* react-bootstrap components */
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import DefaultImg from '../default-img.jpg';
-import { Jumbotron } from 'react-bootstrap';
 
 
 // base api url being used
@@ -222,7 +212,112 @@ export default class CreateListing extends Component {
 
     render() {
         return (
-          <Container>
+        <div>
+            <h3>Create New Listing </h3>
+            <form onSubmit={this.onSubmit}>
+
+            <div className="form-group">
+                <label>Title: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.title}
+                    onChange={this.onChangeTitle}
+                    />
+            </div>
+
+            <div className="form-group">
+                <label>Owner: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.owner}
+                    onChange={this.onChangeOwner}
+                    />
+            </div>
+
+            <div className="form-group">
+                <label>Description: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.description}
+                    onChange={this.onChangeDescription}
+                    />
+            </div>
+
+            <div className="form-group">
+                <label>Condition: </label>
+                <select defaultValue="Select one" value={this.state.condition} onChange={this.onChangeCondition}>
+                            <option condition="Select one">Select one</option>
+                            <option condition="New">New</option>
+                            <option condition="Excellent">Excellent</option>
+                            <option condition="Great">Great</option>
+                            <option condition="Good">Good</option>
+                            <option condition="Worn">Worn</option>
+                        </select>
+            </div>
+
+            <div className="form-group">
+                <label>Location: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.location}
+                    onChange={this.onChangeLocation}
+                    />
+            </div>
+
+            <div className="form-group">
+                <label>Price: </label>
+                <input  type="number"
+                    required
+                    className="form-control"
+                    value={this.state.price}
+                    onChange={this.onChangePrice}
+                    />
+            </div>
+
+
+            <div className="form-group">
+                <label>Category: </label>
+                <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
+                            <option category="Select one">Select one</option>
+                            <option category="Puzzle">Puzzle</option>
+                            <option category="Board Game">Board Game</option>
+                            <option category="Card Game">Card Game</option>
+                            <option category="Other">Other</option>
+                        </select>
+            </div>
+
+                <div className="form-group">
+                <label>Images: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.images}
+                    onChange={this.onChangeImages}
+                    />
+            </div>
+
+            <div className="image-container">
+                <label>Images: </label>
+                <input  type="file"
+                    required
+                    className="process__upload-btn"
+
+                    onChange={this.onChangeMulterImage}
+                    />
+            </div>
+
+            <div className="form-group">
+                <input type="submit" value="Post Listing" className="btn btn-primary" />
+            </div>
+            </form>
+        </div>
+        )
+
+            {/* <Container>
             <Jumbotron>
                 <h1 className="create-listing-header">Create New Listing</h1>
                 <Form onSubmit={this.onSubmit}>
@@ -240,7 +335,7 @@ export default class CreateListing extends Component {
                     <Form.Control type="password" placeholder="Password" />
                   </Form.Group> */}
 
-                  <Form.Group controlId="formGroupDescription">
+                  {/* <Form.Group controlId="formGroupDescription">
                     <Form.Label>Description</Form.Label>
                     <Form.Control as="textarea" placeholder="Description" 
                       rows={4}
@@ -273,9 +368,7 @@ export default class CreateListing extends Component {
 
                     <Form.Group className="input-group" controlId="formGroupPrice">
                       <Form.Label>Price</Form.Label>
-                      {/* <InputGroup.Prepend>
-                        <InputGroup.Text>$</InputGroup.Text>  
-                      </InputGroup.Prepend> */}
+                      
                       <InputGroup>
                         <InputGroup.Prepend>
                           <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
@@ -319,95 +412,9 @@ export default class CreateListing extends Component {
 
                 </Form>
             </Jumbotron>
-          </Container>
-        )      
-            
-            
-            
-            {/* <div>
-                <h3>Create New Listing </h3>
-                <form onSubmit={this.onSubmit}>
-
-                <div className="form-group">
-                    <label>Title: </label>
-                    <input  type="text"
-                        required
-                        className="form-control"
-                        value={this.state.title}
-                        onChange={this.onChangeTitle}
-                        />
-                </div>
-
-                <div className="form-group">
-                    <label>Description: </label>
-                    <input  type="text"
-                        required
-                        className="form-control"
-                        value={this.state.description}
-                        onChange={this.onChangeDescription}
-                        />
-                </div>
-
-                <div className="form-group">
-                    <label>Condition: </label>
-                    <select defaultValue="Select one" value={this.state.condition} onChange={this.onChangeCondition}>
-                                <option condition="Select one">Select one</option>
-                                <option condition="New">New</option>
-                                <option condition="Excellent">Excellent</option>
-                                <option condition="Great">Great</option>
-                                <option condition="Good">Good</option>
-                                <option condition="Worn">Worn</option>
-                            </select>
-                </div>
-
-                <div className="form-group">
-                    <label>Location: </label>
-                    <input  type="text"
-                        required
-                        className="form-control"
-                        value={this.state.location}
-                        onChange={this.onChangeLocation}
-                        />
-                </div>
-
-                <div className="form-group">
-                    <label>Price: </label>
-                    <input  type="number"
-                        required
-                        className="form-control"
-                        value={this.state.price}
-                        onChange={this.onChangePrice}
-                        />
-                </div>
+          </Container> */}
 
 
-                <div className="form-group">
-                    <label>Category: </label>
-                    <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
-                                <option category="Select one">Select one</option>
-                                <option category="Puzzle">Puzzle</option>
-                                <option category="Board Game">Board Game</option>
-                                <option category="Card Game">Card Game</option>
-                                <option category="Other">Other</option>
-                            </select>
-                </div>
-
-                <div className="image-container">
-                    <label>Images: </label>
-                    <input  type="file"
-                        required
-                        className="process__upload-btn"
-
-                        onChange={this.onChangeMulterImage}
-                        />
-                </div>
-
-                <div className="form-group">
-                    <input type="submit" value="Post Listing" className="btn btn-primary" />
-                </div>
-                </form>
-            </div>
-        */}
         
-    } 
+    }
 }
