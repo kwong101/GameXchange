@@ -11,7 +11,18 @@ const ImageSchema = new Schema({
     imageData: {
         type: Buffer,
         required: true
-    }
+    },
+
+    productTitle: {
+        type: String,
+        required: true
+
+    },
+
+    productDescription: {
+        type: String,
+        required: true
+    },
 
     }, {
         timestamps: true,
