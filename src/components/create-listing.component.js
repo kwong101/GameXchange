@@ -41,7 +41,8 @@ export default class CreateListing extends Component {
             price: '',
             category: '',
             images: '',
-            multerImage: ''
+            multerImage: '',
+            listingId: ''
         }
     }
 
@@ -127,9 +128,22 @@ export default class CreateListing extends Component {
         // we link this after finishing some front end stuff
         console.log(listing);
 
-        axios.post('http://localhost:5000/listings/add', listing)
-        .then(res => console.log(res.data));
 
+        axios.post('http://localhost:5000/listings/add', listing)
+        .then((data) => {
+            if (data.data.success) {
+                alert("listing added woop");
+                console.log(data._id);
+//
+            }
+        });
+
+                        //this.setState({
+                        //  listingId: data.target._id
+                        //})
+
+//        axios.get('http://localhost:5000/listings/dootdoot', this.productTitle, listing)
+//        .then(res => console.log(res.data))
 
         let imageObj = {};
 
@@ -137,8 +151,8 @@ export default class CreateListing extends Component {
 
         imageFormObj.append("imageName", "multer-image-" + Date.now());
         imageFormObj.append("imageData", this.state.multerImage);
-
-
+        imageFormObj.append("productTitle", this.state.title)
+        imageFormObj.append("productDescription", this.state.description)
 
         axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
             .then((data) => {
@@ -151,9 +165,6 @@ export default class CreateListing extends Component {
                 alert("Error while uploading image using multer");
 
             });
-
-
-
 
         // take user to the listing page for what they posted
         window.location = '/listings/';

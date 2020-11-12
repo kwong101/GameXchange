@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const listingSchema = new Schema({
   title: {
     type: String,
+    unique: true,
     required: true,
     minlength: 3,
   },
@@ -38,8 +39,7 @@ const listingSchema = new Schema({
   category: {
     type: String,
     required: true,
-  },
-
+  }
 
 }, {
   timestamps: true,
