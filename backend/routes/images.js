@@ -44,7 +44,7 @@ const upload = multer({
 */
 router.route("/uploadmulter")
     .post(upload.single('imageData'), (req, res, next) => {
-        console.log(req.body);
+        //console.log(req.body);
         const newImage = new Image({
             imageName: req.body.imageName,
             imageData: req.file.path,
@@ -54,7 +54,7 @@ router.route("/uploadmulter")
 
         newImage.save()
             .then((result) => {
-                console.log(result);
+                //console.log(result);
                 res.status(200).json({
                     success: true,
                     document: result

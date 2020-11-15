@@ -63,5 +63,10 @@ app.use('/images', ImageRouter);
 
 
 app.listen(port, () => {
-    console.log('Server is running on port: ${port}');
+    // FIXME: I'm just noting that I made a change here to see
+    // If we can get it to print the port number correctly. 
+    // idk when this stopped working. it just prints ${port}
+    // Ok it works now
+    //console.log('Server is running on port: ${port}');
+    console.log('Server is listening on port:', port)
 });

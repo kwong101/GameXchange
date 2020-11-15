@@ -2,6 +2,7 @@ const router = require('express').Router();
 let Listing = require('../models/listing.model');
 
 router.route('/').get((req, res) => {
+  // returns all listings as json
   Listing.find()
     .then(listings => res.json(listings)) 
     .catch(err => res.status(400).json('Error: ' + err));

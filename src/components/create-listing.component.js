@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
 //import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Modal from 'react-bootstrap/Modal';
 //import { Link } from 'react-router-dom';
 
 
@@ -37,6 +38,47 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
       </td>
   </tr>
 ) */
+
+
+
+
+
+// Functional component for the modal. 
+// Got skeleton from react-bootstrap documentation
+function ConfirmationModal() {
+  // Moved this a few lines before this function to make it global
+  // I want this modal to be triggered when my class component 
+  // gets submit pressed
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+
+
 
 export default class CreateListing extends Component {
 
@@ -71,7 +113,11 @@ export default class CreateListing extends Component {
           category: '',
           images: '',
           multerImage: '',
-          listingId: ''
+          // FIXME: this listingId thing never got implemented
+          listingId: '',
+          // This is so i can hide the form on submit
+          showForm: true,
+          isRedirecting: false
         }
     }
 
@@ -87,6 +133,27 @@ export default class CreateListing extends Component {
 //                }
 //            })
 //    }
+
+    // handles redirect
+    handleRedirect = ()=>{
+      this.setState({
+        isRedirecting: true
+      })
+    }
+
+
+    // to show and hide the form
+    handleShow = ()=>{
+      this.setState({
+          showForm: true
+      })
+    }
+
+    handleHide = () =>{
+        this.setState({
+            showForm: false
+        })
+    }
 
     onChangeTitle(e) {
         this.setState({
@@ -142,8 +209,8 @@ export default class CreateListing extends Component {
     // create image object and send to image db
 
     onSubmit(e) {
-        e.preventDefault();
-
+        e.preventDefault();        
+        
         const listing = {
             title: this.state.title,
             description: this.state.description,
@@ -154,16 +221,20 @@ export default class CreateListing extends Component {
             category: this.state.category
         }
 
+        this.handleHide();
+
         // we link this after finishing some front end stuff
-        console.log(listing);
+        console.log('listing log here');
+        console.log(this.state.id);
 
 
         axios.post('http://localhost:5000/listings/add', listing)
         .then((data) => {
-            if (data.data.success) {
-                alert("listing added woop");
-                console.log("Listing post to listings/add success");
-                console.log(data._id);
+            if (data.success) {
+                console.log('Listing post to listings/add success');
+                //alert("listing added woop");
+                //console.log('Listing post to listings/add success');
+                //console.log(data._id);
             }
         });
 
@@ -196,8 +267,11 @@ export default class CreateListing extends Component {
             });
 
         // take user to the listing page for what they posted
-          window.location = '/listings/';
+        // FIXME: ASAP uncomment this redirect  
+        //window.location = '/listings/';
         
+        
+
     }
 
 
@@ -235,200 +309,145 @@ export default class CreateListing extends Component {
 
 
     render() {
+      // this should be this.state.showform not !
+      // FIXME: ASAP this for 
+      // DEBUG: 
+      if (this.state.showForm) {
         return (
-        <div>
-            {/* 
-              old regular react render code here
-            <h3>Create New Listing </h3>
-            <form onSubmit={this.onSubmit}>
+          <div>
 
-            <div className="form-group">
-                <label>Title: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.title}
-                    onChange={this.onChangeTitle}
-                    />
-            </div>
+            <Container>
+              <Jumbotron>
+                  <h1 className="create-listing-header">Create New Listing</h1>
 
-            <div className="form-group">
-                <label>Owner: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.owner}
-                    onChange={this.onChangeOwner}
-                    />
-            </div>
-
-            <div className="form-group">
-                <label>Description: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.description}
-                    onChange={this.onChangeDescription}
-                    />
-            </div>
-
-            <div className="form-group">
-                <label>Condition: </label>
-                <select defaultValue="Select one" value={this.state.condition} onChange={this.onChangeCondition}>
-                            <option condition="Select one">Select one</option>
-                            <option condition="New">New</option>
-                            <option condition="Excellent">Excellent</option>
-                            <option condition="Great">Great</option>
-                            <option condition="Good">Good</option>
-                            <option condition="Worn">Worn</option>
-                        </select>
-            </div>
-
-            <div className="form-group">
-                <label>Location: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.location}
-                    onChange={this.onChangeLocation}
-                    />
-            </div>
-
-            <div className="form-group">
-                <label>Price: </label>
-                <input  type="number"
-                    required
-                    className="form-control"
-                    value={this.state.price}
-                    onChange={this.onChangePrice}
-                    />
-            </div>
+                  <Form onSubmit={this.onSubmit}>
 
 
-            <div className="form-group">
-                <label>Category: </label>
-                <select defaultValue="Select one" value={this.state.category} onChange={this.onChangeCategory}>
-                            <option category="Select one">Select one</option>
-                            <option category="Puzzle">Puzzle</option>
-                            <option category="Board Game">Board Game</option>
-                            <option category="Card Game">Card Game</option>
-                            <option category="Other">Other</option>
-                        </select>
-            </div>
-
-            <div className="image-container">
-                <label>Images: </label>
-                <input  type="file"
-                    required
-                    className="process__upload-btn"
-
-                    onChange={this.onChangeMulterImage}
-                    />
-            </div>
-
-            <div className="form-group">
-                <input type="submit" value="Post Listing" className="btn btn-primary" />
-            </div>
-            </form> */}
-        
-
-          <Container>
-            <Jumbotron>
-                <h1 className="create-listing-header">Create New Listing</h1>
-
-                <Form onSubmit={this.onSubmit}>
-                  <Form.Group controlId="formGroupTitle">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" 
-                      value={this.state.title || ''} // (undefined || '') = ''
-                      onChange={this.onChangeTitle}
-                    />
-                  </Form.Group>
-
-                  <Form.Group controlId="formGroupOwner">
-                    <Form.Label>Owner</Form.Label>
-                    <Form.Control type="text" placeholder="Owner" 
-                      value={this.state.owner || ''} // (undefined || '') = ''
-                      onChange={this.onChangeOwner}
-                    />
-                  </Form.Group>
-
-                  <Form.Group controlId="formGroupDescription">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" placeholder="Description" 
-                      rows={4}
-                      value={this.state.description || ''} // (undefined || '') = ''
-                      onChange={this.onChangeDescription}
-                    />
-                  </Form.Group>
-
-                  <Form.Group controlId="formGroupCondition">
-                    <Form.Label>Condition</Form.Label>
-                    <Form.Control as="select" custom 
-                      value={this.state.condition || ''} // (undefined || '') = ''
-                      onChange={this.onChangeCondition}
-                    >
-                      <option>Brand new</option>
-                      <option>Excellent</option>
-                      <option>Great</option>
-                      <option>Good</option>
-                      <option>Worn</option>
-                    </Form.Control>
-                  </Form.Group>
-
-                  <Form.Group controlId="formGroupLocation">
-                    <Form.Label>Location</Form.Label>
-                    <Form.Control type="text" placeholder="Location" 
-                      value={this.state.location || ''} // (undefined || '') = ''
-                      onChange={this.onChangeLocation}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="input-group" controlId="formGroupPrice">
-                    <Form.Label>Price</Form.Label>
-                    
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control type="text" placeholder="Price" 
-                        value={this.state.price || ''} // (undefined || '') = ''
-                        onChange={this.onChangePrice}
+                    <Form.Group controlId="formGroupTitle">
+                      <Form.Label>Title</Form.Label>
+                      <Form.Control type="text" placeholder="Title" 
+                        value={this.state.title || ''} // (undefined || '') = ''
+                        onChange={this.onChangeTitle}
                       />
-                    </InputGroup>
-                  </Form.Group>
-                  
-                  <Form.Group controlId="formGroupCategory">
-                    <Form.Label>Category</Form.Label>
-                    <Form.Control as="select" custom 
-                      value={this.state.category || ''} // (undefined || '') = ''
-                      onChange={this.onChangeCategory}
-                    >
-                      <option>Puzzle</option>
-                      <option>Board game</option>
-                      <option>Card Game</option>
-                      <option>Other</option>
-                    </Form.Control>
-                  </Form.Group>
+                    </Form.Group>
 
-                  <Form.Group controlId="formGroupImages">
-                    <Form.File 
-                      className="process__upload-btn"
-                      id="file-upload"
-                      label="Images"
-                      onChange={this.onChangeMulterImage}
-                    />
-                  </Form.Group>
+                    <Form.Group controlId="formGroupOwner">
+                      <Form.Label>Owner</Form.Label>
+                      <Form.Control type="text" placeholder="Owner" 
+                        value={this.state.owner || ''} // (undefined || '') = ''
+                        onChange={this.onChangeOwner}
+                      />
+                    </Form.Group>
 
-                  <Button variant="primary" type="submit" className="btn btn-primary">
-                    Post Listing
-                  </Button>
-                </Form>
-            </Jumbotron>
-          </Container>
+                    <Form.Group controlId="formGroupDescription">
+                      <Form.Label>Description</Form.Label>
+                      <Form.Control as="textarea" placeholder="Description" 
+                        rows={4}
+                        value={this.state.description || ''} // (undefined || '') = ''
+                        onChange={this.onChangeDescription}
+                      />
+                    </Form.Group>
 
+                    <Form.Group controlId="formGroupCondition">
+                      <Form.Label>Condition</Form.Label>
+                      <Form.Control as="select" custom 
+                        value={this.state.condition || ''} // (undefined || '') = ''
+                        onChange={this.onChangeCondition}
+                      >
+                        <option>Brand new</option>
+                        <option>Excellent</option>
+                        <option>Great</option>
+                        <option>Good</option>
+                        <option>Worn</option>
+                      </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId="formGroupLocation">
+                      <Form.Label>Location</Form.Label>
+                      <Form.Control type="text" placeholder="Location" 
+                        value={this.state.location || ''} // (undefined || '') = ''
+                        onChange={this.onChangeLocation}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="input-group" controlId="formGroupPrice">
+                      <Form.Label>Price</Form.Label>
+                      
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="prepend-cash-sign">$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control type="text" placeholder="Price" 
+                          value={this.state.price || ''} // (undefined || '') = ''
+                          onChange={this.onChangePrice}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    
+                    <Form.Group controlId="formGroupCategory">
+                      <Form.Label>Category</Form.Label>
+                      <Form.Control as="select" custom 
+                        value={this.state.category || ''} // (undefined || '') = ''
+                        onChange={this.onChangeCategory}
+                      >
+                        <option>Puzzle</option>
+                        <option>Board game</option>
+                        <option>Card Game</option>
+                        <option>Other</option>
+                      </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId="formGroupImages">
+                      <Form.File 
+                        className="process__upload-btn"
+                        id="file-upload"
+                        label="Images"
+                        onChange={this.onChangeMulterImage}
+                      />
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit" className="btn btn-primary">
+                      Post Listing
+                    </Button>
+                  </Form>
+              </Jumbotron>
+            </Container>
+
+            <ConfirmationModal />
           </div>
         )
         
+      } else {
+        // Hide the form, and now only display "Posting..."
+        // And a redirect message "go now" or "back to listings" or somethin
+        return (
+          <div>
+
+            <Container>
+              <Jumbotron>
+                <h1 className="create-listing-header">New listing posted!</h1>
+                
+                <div className="mb-2">
+                  <Button variant="primary" disabled={this.state.isRedirecting} 
+                    onClick={this.handleRedirect} size="lg">
+                    {this.state.isRedirecting ? "Redirecting..." : "View my listing"}
+                  </Button>{' '}
+                </div>
+                <div>
+                  <Button variant="secondary" size="sm">
+                    Post another listing
+                  </Button>
+                </div>
+              </Jumbotron>
+            </Container>
+
+          </div>
+        )
+
+
+
+      }
     }
+        
 }
+
