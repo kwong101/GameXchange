@@ -16,6 +16,8 @@ router.route('/add').post((req, res) => {
     const location = req.body.location;
     const price = req.body.price;
     const category = req.body.category;
+    const listingId = req.body.listingId;
+
 
     const newListing = new Listing({
       title,
@@ -24,13 +26,23 @@ router.route('/add').post((req, res) => {
       condition,
       location,
       price,
-      category
+      category,
+      listingId
     });
 
   newListing.save()
     .then(() => res.json('Listing added!'))
     .catch(err => res.status(400).json('Error: ' + err));
-});
+
+    console.log('This is for title: ', newListing.title)
+
+    // new: testing the id print
+    console.log('new instantiation of listing, print the id pls...')
+    console.log(newListing._id)
+    newListing.listingId = newListing._id
+    console.log('now i print the saved var...')
+    console.log(newListing.listingId)
+  });
 
 
 

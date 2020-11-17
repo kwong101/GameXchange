@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 //import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Modal from 'react-bootstrap/Modal';
 //import { Link } from 'react-router-dom';
 
 
@@ -43,40 +42,6 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-// Functional component for the modal. 
-// Got skeleton from react-bootstrap documentation
-function ConfirmationModal() {
-  // Moved this a few lines before this function to make it global
-  // I want this modal to be triggered when my class component 
-  // gets submit pressed
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
 
 
 
@@ -104,6 +69,10 @@ export default class CreateListing extends Component {
         this.onChangeMulterImage = this.onChangeMulterImage.bind(this)
         this.onSubmit = this.onSubmit.bind(this);
 
+        // new: to get redirect to work
+/*         this.redirectTimeout = null;
+ */
+
         this.state = {
           title: '',
           description: '',
@@ -114,12 +83,13 @@ export default class CreateListing extends Component {
           images: '',
           multerImage: '',
           // FIXME: this listingId thing never got implemented
-          listingId: '',
           // This is so i can hide the form on submit
           showForm: true,
           isRedirecting: false
         }
     }
+
+    // new: creating variable to hold the listing id in this function onlyu
 
 //    // gets called right before loading a page
 //    componentDidMount() {
@@ -134,12 +104,47 @@ export default class CreateListing extends Component {
 //            })
 //    }
 
+      /* new: adding componentdidmount funct so that i can delay
+      redirect to the new url, view-listing url thing 
+      DIDNT WORK, going to try new method */
+/*       componentDidMount() {
+        const {history} = this.props;
+        this.redirectTimeout = setTimeout(() => {
+          history.push('/')
+        }, 5000);
+      }
+
+      componentWillUnmount() {
+        clearTimeout(this.redirectTimeout);
+      } */
+
+
+      // 
+      handleRedirect = event => {
+        const { history: { push } } = this.props;
+        this.setState({
+          isRedirecting: true,
+/*           listingId: event._id.toString()
+ */        })
+
+        console.log('handling redirect...')
+        console.log('Title is: ' + this.state.title)
+        console.log('Listing ID is: ' + this.props.match.params.id)
+        
+        event.preventDefault();
+        setTimeout(()=>push('/view-listing/' + this.state.listingId), 3000);
+      }
+
+
     // handles redirect
-    handleRedirect = ()=>{
+    // THIS WAS WORKING, comment ou the above funct if stops
+    // Then, uncomment the below funct
+
+    /* handleRedirect = ()=>{
       this.setState({
         isRedirecting: true
       })
-    }
+    } */
 
 
     // to show and hide the form
@@ -218,18 +223,24 @@ export default class CreateListing extends Component {
             condition: this.state.condition,
             location: this.state.location,
             price: this.state.price,
-            category: this.state.category
+            category: this.state.category,
+            // new: added this to listing
+            listingId: this.state.listingId
         }
 
         this.handleHide();
 
-        // we link this after finishing some front end stuff
+
+        // this doesnt print listingid
         console.log('listing log here');
-        console.log(this.state.id);
+        console.log(listing.listingId);
 
 
         axios.post('http://localhost:5000/listings/add', listing)
         .then((data) => {
+          console.log('listing log here from axios post ');
+          console.log(listing.listingId);
+
             if (data.success) {
                 console.log('Listing post to listings/add success');
                 //alert("listing added woop");
@@ -413,7 +424,6 @@ export default class CreateListing extends Component {
               </Jumbotron>
             </Container>
 
-            <ConfirmationModal />
           </div>
         )
         

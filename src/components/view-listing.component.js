@@ -13,8 +13,7 @@ import axios from 'axios';
 //This is implemented as a functional react component
 // It accepts the props passed into it, which are exercise, deleteexercise, and key
 
-// Not using this functional react component anymore
-// bc not using listingInfo function
+
 // Browse uses similar setup tho
 const Listing = props => (
     // returns a Table Row
@@ -52,7 +51,7 @@ export default class ViewListing extends Component {
         super(props);
 
         this.deleteListing = this.deleteListing.bind(this);
-
+        
         this.state = {
             title: '',
             description: '',
