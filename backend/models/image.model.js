@@ -13,16 +13,11 @@ const ImageSchema = new Schema({
         required: true
     },
 
-    productTitle: {
+    listingId: {
         type: String,
         required: true
 
-    },
-
-    productDescription: {
-        type: String,
-        required: true
-    },
+    }
 
     }, {
         timestamps: true,

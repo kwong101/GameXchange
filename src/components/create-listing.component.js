@@ -243,15 +243,24 @@ export default class CreateListing extends Component {
           console.log('id field = ' + listing_data.substring(8,32))
           console.log('title = ' + this.state.title)
           this.listingId = listing_data.substring(8,32)
+          
+          //adding image stuff
+          let imageFormObj = new FormData();
+          imageFormObj.append("imageName", "multer-image-" + Date.now());
+          imageFormObj.append("imageData", this.state.multerImage);
+          imageFormObj.append("listingId", this.listingId)
+  
+          axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
+              .then((data) => {
+                  if (data.data.success) {
+                  console.log(data);
+              }
+              })
+              .catch((err) => {
+                  console.log(err);
+              });
 
           this.props.history.push('/listings/' + this.listingId);
-
-            if (data.success) {
-                console.log('Listing post to listings/add success');
-                //alert("listing added woop");
-                //console.log('Listing post to listings/add success');
-                //console.log(data._id);
-            }
         });
 
         
@@ -265,32 +274,24 @@ export default class CreateListing extends Component {
 
         //let imageObj = {};
         
-
+/*
         let imageFormObj = new FormData();
 
         imageFormObj.append("imageName", "multer-image-" + Date.now());
         imageFormObj.append("imageData", this.state.multerImage);
-        imageFormObj.append("productTitle", this.state.title)
-        imageFormObj.append("productDescription", this.state.description)
+        imageFormObj.append("listingId", this.listingId)
+       
 
         axios.post('http://localhost:5000/images/uploadmulter', imageFormObj)
             .then((data) => {
                 if (data.data.success) {
-                alert("Image has been successfully uploaded using multer");
-
+                console.log(data);
             }
             })
             .catch((err) => {
-                alert("Error while uploading image using multer");
-
+                console.log(err);
             });
-
-        // take user to the listing page for what they posted
-        // FIXME: ASAP uncomment this redirect  
-        //window.location = '/listings/';
-        
-        
-
+    */
     }
 
 
