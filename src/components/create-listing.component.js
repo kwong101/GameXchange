@@ -64,7 +64,7 @@ export default class CreateListing extends Component {
         this.onChangePrice = this.onChangePrice.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
 //        //new
-
+        this.listingId = ""
 //        this.multerImages = this.onChangeMulterImages.bind(this);
         this.onChangeMulterImage = this.onChangeMulterImage.bind(this)
         this.onSubmit = this.onSubmit.bind(this);
@@ -132,7 +132,7 @@ export default class CreateListing extends Component {
         console.log('Listing ID is: ' + this.props.match.params.id)
         
         event.preventDefault();
-        setTimeout(()=>push('/view-listing/' + this.state.listingId), 3000);
+        // setTimeout(()=>push('/view-listing/' + this.state.listingId), 3000);
       }
 
 
@@ -238,8 +238,13 @@ export default class CreateListing extends Component {
 
         axios.post('http://localhost:5000/listings/add', listing)
         .then((data) => {
-          console.log('listing log here from axios post ');
-          console.log(listing.listingId);
+          var listing_data = JSON.stringify(data.data);
+          console.log('DATAAAA = ' + listing_data);
+          console.log('id field = ' + listing_data.substring(8,32))
+          console.log('title = ' + this.state.title)
+          this.listingId = listing_data.substring(8,32)
+
+          this.props.history.push('/listings/' + this.listingId);
 
             if (data.success) {
                 console.log('Listing post to listings/add success');
@@ -249,6 +254,8 @@ export default class CreateListing extends Component {
             }
         });
 
+        
+
                         //this.setState({
                         //  listingId: data.target._id
                         //})
@@ -257,6 +264,7 @@ export default class CreateListing extends Component {
 //        .then(res => console.log(res.data))
 
         //let imageObj = {};
+        
 
         let imageFormObj = new FormData();
 

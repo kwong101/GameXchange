@@ -31,7 +31,7 @@ router.route('/add').post((req, res) => {
     });
 
   newListing.save()
-    .then(() => res.json('Listing added!'))
+    .then(() => res.data)
     .catch(err => res.status(400).json('Error: ' + err));
 
     console.log('This is for title: ', newListing.title)
@@ -42,6 +42,7 @@ router.route('/add').post((req, res) => {
     newListing.listingId = newListing._id
     console.log('now i print the saved var...')
     console.log(newListing.listingId)
+    res.redirect("/listings/" + newListing.listingId)
   });
 
 
