@@ -45,3 +45,16 @@ a {
  height: 37px;
  display: inline-block;
 }
+
+.forgot-password,
+.submit-button {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}

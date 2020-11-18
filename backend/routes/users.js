@@ -97,7 +97,7 @@ const email = req.body.email;
       } else {
         return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .json({ passwordincorrect: "Password is incorrect" });
       }
     });
   });

@@ -175,8 +175,10 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-// This is so we can redirect without having to be inside of a component and use
-// this.props.history.push etc blah
+// Wrapping our Reigster with withRouter is so we can redirect without 
+//having to be inside of a component and use this.props.history.push etc blah
+// We connect React components to our Redux Store 
+// Provided by the Provider component. 
 export default connect(
     mapStateToProps,
     { registerUser }

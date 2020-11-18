@@ -1,6 +1,8 @@
 import React from 'react';
 /* Bootstrap CSS framework just makes styling easier. */
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import Navbar from "./components/navbar.component"
@@ -74,23 +76,29 @@ function App() {
           the jsx is rendered from those components. */}
           
           {/* FIXME: How to render more than one? */}
-          <Route exact path="/" component={Home} />
-          <Route path="/about" exact component={AboutUs} />
-          {/* FIXME: remove viewlogs eventually */}
-          <Route path="/viewlogs" exact component={ExercisesList} />
-          <Route path="/edit/:id" component={EditExercise} />
 
-          <Route path="/create" component={CreateListing} />
-          <Route path="/user" component={CreateUser} />
-          <Route path="/listings" exact component={Browse} />
-          <Route path="/listings/:id" component={ViewListing} />
+          <div className="outer">
+            <div className="inner">
 
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+              <Route exact path="/" component={Home} />
+              <Route path="/about" exact component={AboutUs} />
+              {/* FIXME: remove viewlogs eventually */}
+              <Route path="/viewlogs" exact component={ExercisesList} />
+              <Route path="/edit/:id" component={EditExercise} />
 
-          <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          </Switch>
+              <Route path="/create" component={CreateListing} />
+              <Route path="/user" component={CreateUser} />
+              <Route path="/listings" exact component={Browse} />
+              <Route path="/listings/:id" component={ViewListing} />
+
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+            </div>
+          </div>
         </div>
         
         {/* this is all for the sign in with google vvvv */}

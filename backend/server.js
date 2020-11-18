@@ -23,7 +23,7 @@ const port = process.env.PORT || 5000;
 // commented this var passport line out
 //var passport = require("passport");
 
-// middleware
+// middleware (this is old code)
 app.use(cors());
 app.use(express.json());
 

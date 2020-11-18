@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
+import {Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
+import PrivateRoute from "./private-route/PrivateRoute";
+import { registerUser } from "../actions/authActions";
 
+
+// FIXME: not grabbing the correct image here
 const logo = require('../ge_logo.svg');
+
+
+
 
 export default class MyNavbar extends Component {
   constructor(props) {
@@ -13,16 +19,58 @@ export default class MyNavbar extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
+
   toggleMenu(){
     this.setState({ menu: !this.state.menu})
   }
 
+  // Trying to setup componentDidMount
+  // to only show certain links on navbar if ur logged in
+  //componentDidMount() {
+    // If logged in, then change what navbar will show
+/*     if(this.props.auth.isAuthenticated) {
+      console.log('User not logged in.')
+    }
+  } */
+
+
+
   render() {
 
-    const show = (this.state.menu) ? "show" : "" ;
+    // this was used with the OLD NAV CODE. its before the return
+    //const show = (this.state.menu) ? "show" : "" ;
 
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      // NEW NAV CODE with only react-bootstrap
+      <Navbar  variant="dark">
+        <Navbar.Brand href="/">
+          <img
+            alt="GameXchange Logo."
+            src={logo}
+            width="32"
+            height="32"
+            className="d-inline-block align-top"
+            fill="white"
+          />{' '}
+          GameXchange
+          </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/about">About us</Nav.Link>
+          <Nav.Link href="#features">Create</Nav.Link>
+          <Nav.Link href="#pricing">Pricing</Nav.Link>
+        </Nav>
+        <Nav className="ml-auto">
+          <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/register">Register</Nav.Link>
+        </Nav>
+      </Navbar>
+    );}
+
+
+
+
+      // OLD NAV CODE WITH MIXING bootstrap and react-bootstrap 
+/*       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">
             <img
@@ -37,9 +85,6 @@ export default class MyNavbar extends Component {
           </Navbar.Brand>
         </Navbar>
 
-        {/* 
-        <Link to="/" className="navbar-brand">GameXchange</Link>
-        */}
 
         <button className="navbar-toggler" type="button" onClick={ this.toggleMenu }>
           <span className="navbar-toggler-icon"></span>
@@ -69,5 +114,5 @@ export default class MyNavbar extends Component {
         </div>
       </nav>
     );
-  }
+  } */
 }
