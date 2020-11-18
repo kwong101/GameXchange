@@ -21,9 +21,11 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 // Login - get user token
+// REVISIT: why do i need to add localhost:5000 to the register user
+// above, but without the localhost:5000 below, i can still login fine?
 export const loginUser = userData => dispatch => {
     axios
-        .post("/users/login", userData)
+        .post("http://localhost:5000/users/login", userData)
         .then(res => {
             // Save to localStorage
 
