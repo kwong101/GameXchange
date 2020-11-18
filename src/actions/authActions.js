@@ -10,7 +10,7 @@ import {
 // Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post("/users/register", userData)
+        .post("http://localhost:5000/users/register", userData)
         .then(res => history.push("/login")) // re-direct to login on successful register
         .catch(err =>
             dispatch({
