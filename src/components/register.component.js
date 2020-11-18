@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
 import classnames from "classnames";
+import { Container, Form, Button } from "react-bootstrap";
 
 class Register extends Component {
     
@@ -64,7 +65,142 @@ class Register extends Component {
         <div className="outer">
             <div className="inner">
 
-        <div className="container">
+                <Container>
+
+                <Form noValidate onSubmit={this.onSubmit}>
+
+                    {/* this is called forgot-password but its just
+                    left that way bc im lazy and it already looks fine.
+                    even though the text doesnt even say forgot password. */}
+                <p className="forgot-password text-right">
+                        {/* FIXME: need to make this forgot pw page still */}
+                        Already signed up? <a href="/login">Sign in.</a>
+                    </p>
+                    <h1>Register</h1>
+
+                    
+
+                    <hr />
+
+                    <Form.Group controlId="name">
+                        <Form.Label>Full name</Form.Label>
+
+                        {/* simple validation checks here. 
+                        should be nothing in the error field, and we set
+                        if its invalid or valid depending on the error values */}
+                        <Form.Control 
+                            type="name" 
+                            placeholder="Name"
+                            onChange={this.onChange}
+                            error={errors.name}
+                            isInvalid={
+                                errors.name
+                            }
+                        />
+
+                        <Form.Control.Feedback className="feedback-text" type="invalid">
+                            {errors.name}
+                        </Form.Control.Feedback>
+
+                        {/* <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text> */}
+                    </Form.Group>
+
+
+                    <Form.Group controlId="email">
+                        <Form.Label>Email</Form.Label>
+
+                        {/* simple validation checks here. 
+                        should be nothing in the error field, and we set
+                        if its invalid or valid depending on the error values */}
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email"
+                            onChange={this.onChange}
+                            error={errors.email}
+                            isInvalid={
+                                errors.email || errors.emailnotfound
+                            }
+                            isValid={
+                                this.email && 
+                                (errors.email == null)
+                            }
+                        />
+
+                        <Form.Control.Feedback className="feedback-text" type="invalid">
+                            {errors.email}
+                        </Form.Control.Feedback>
+
+                    </Form.Group>
+
+                    <Form.Group controlId="password">
+                        <Form.Label>Password</Form.Label>
+
+                        {/* simple validation checks here. 
+                        should be nothing in the error field, and we set
+                        if its invalid or valid depending on the error values */}
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Enter password"
+                            onChange={this.onChange}
+                            error={errors.password}
+                            isInvalid={
+                                errors.password
+                            }
+                            isValid={
+                                this.password &&
+                                (errors.password == null)
+                            }
+                        />
+
+                        <Form.Control.Feedback className="feedback-text" type="invalid">
+                            {errors.password}
+                        </Form.Control.Feedback>
+
+                    </Form.Group>
+
+
+                    <Form.Group controlId="password2">
+                        <Form.Label>Confirm password</Form.Label>
+
+                        {/* simple validation checks here. 
+                        should be nothing in the error field, and we set
+                        if its invalid or valid depending on the error values */}
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Confirm password"
+                            onChange={this.onChange}
+                            error={errors.password2}
+                            isInvalid={
+                                errors.password2
+                            }
+                            isValid={
+                                this.password2 &&
+                                (errors.password2 == null)
+                            }
+                        />
+
+                        <Form.Control.Feedback className="feedback-text" type="invalid">
+                            {errors.password2}
+                        </Form.Control.Feedback>
+
+                    </Form.Group>
+
+                            
+
+                    <Button className="submit-button" variant="primary" type="submit">
+                        Submit
+                    </Button>
+                    
+
+                </Form>
+
+                </Container>
+
+
+
+        {/* <div className="container">
             <div className="row">
             <div className="col s8 offset-s2">
                 <Link to="/" className="btn-flat waves-effect">
@@ -153,7 +289,7 @@ class Register extends Component {
                 </form>
             </div>
             </div>
-        </div>
+        </div> */}
         </div>
         </div>
         );

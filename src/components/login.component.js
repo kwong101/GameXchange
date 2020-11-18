@@ -66,7 +66,12 @@ class Login extends Component {
         <Container>
             
                 <Form noValidate onSubmit={this.onSubmit}>
-                    <h1>Login</h1>
+
+                <p className="forgot-password text-right">
+                        {/* FIXME: need to make this forgot pw page still */}
+                        Don't have an account? <a href="/register">Register here.</a>
+                    </p>
+                    <h1>Log in</h1>
 
                     <hr />
 

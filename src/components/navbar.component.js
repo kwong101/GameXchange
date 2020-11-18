@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
+import {Nav, Navbar, Form, FormControl, Button, Dropdown, DropdownButton} from 'react-bootstrap';
 import PrivateRoute from "./private-route/PrivateRoute";
 import { registerUser } from "../actions/authActions";
 
@@ -18,6 +18,9 @@ export default class MyNavbar extends Component {
     };
     this.toggleMenu = this.toggleMenu.bind(this);
   }
+
+
+  
 
 
   toggleMenu(){
@@ -42,7 +45,7 @@ export default class MyNavbar extends Component {
 
     return (
       // NEW NAV CODE with only react-bootstrap
-      <Navbar  variant="dark">
+      <Navbar collapseOnSelect expand="lg" variant="dark">
         <Navbar.Brand href="/">
           <img
             alt="GameXchange Logo."
@@ -54,15 +57,23 @@ export default class MyNavbar extends Component {
           />{' '}
           GameXchange
           </Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/about">About us</Nav.Link>
-          <Nav.Link href="#features">Create</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Nav className="ml-auto">
-          <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/register">Register</Nav.Link>
-        </Nav>
+
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+
+              <Nav className="mr-auto">
+                <Nav.Link href="/about">About us</Nav.Link>
+                <Nav.Link href="/create">Post listing</Nav.Link>
+                <Nav.Link href="/listings">Browse</Nav.Link>
+                <Nav.Link href="#profile">My Profile</Nav.Link>
+              </Nav>
+
+
+              <Nav className="ml-auto">
+                <Nav.Link href="/login">Log in</Nav.Link>
+                <Nav.Link href="/register">Register</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
       </Navbar>
     );}
 

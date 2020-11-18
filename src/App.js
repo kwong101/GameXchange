@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 /* Bootstrap CSS framework just makes styling easier. */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -33,6 +33,8 @@ import store from "./store";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard.component";
 
+
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -54,13 +56,22 @@ if (localStorage.jwtToken) {
 }
 
 
-
 // new login: i commented the const auth_url out too
 // creating constant to use for the sign in with google button
 //const auth_url = "http://localhost:5000/auth/google";
 
 
 function App() {
+
+    const [user, setCurrentUser] = useState({});
+
+    useEffect(() => {
+      console.log('idk why i have this here');
+    }, []);
+
+
+    if (!user) return null;
+
   return (
     <Provider store={store}>
       <Router>
@@ -89,7 +100,7 @@ function App() {
               <Route path="/user" component={CreateUser} />
               <Route path="/listings" exact component={Browse} />
               <Route path="/listings/:id" component={ViewListing} />
-
+              
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
 
