@@ -60,6 +60,9 @@ class Login extends Component {
         const { errors } = this.state;
 
     return (
+
+        <div className="outer">
+            <div className="inner">
         <Container>
             
                 <Form noValidate onSubmit={this.onSubmit}>
@@ -134,7 +137,8 @@ class Login extends Component {
                 </Form>
             
         </Container>
-    
+        </div>
+        </div>
     );
         
         

@@ -61,6 +61,9 @@ class Register extends Component {
         const { errors } = this.state;
 
     return (
+        <div className="outer">
+            <div className="inner">
+
         <div className="container">
             <div className="row">
             <div className="col s8 offset-s2">
@@ -150,6 +153,8 @@ class Register extends Component {
                 </form>
             </div>
             </div>
+        </div>
+        </div>
         </div>
         );
     }

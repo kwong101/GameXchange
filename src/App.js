@@ -77,8 +77,7 @@ function App() {
           
           {/* FIXME: How to render more than one? */}
 
-          <div className="outer">
-            <div className="inner">
+          
 
               <Route exact path="/" component={Home} />
               <Route path="/about" exact component={AboutUs} />
@@ -97,8 +96,6 @@ function App() {
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
-            </div>
-          </div>
         </div>
         
         {/* this is all for the sign in with google vvvv */}

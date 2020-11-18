@@ -29,7 +29,7 @@ a {
  border-radius: 4px;
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
- -moz-font-feature-settings: "liga" on;
+ font-feature-settings: "liga" on;
  color: rgba(0, 0, 0, 0.84) !important;
  fill: rgba(0, 0, 0, 0.84) !important;
  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
