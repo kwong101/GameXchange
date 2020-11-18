@@ -160,7 +160,7 @@ class Register extends Component {
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.string.isRequired
+    errors: PropTypes.object.isRequired
 };
 
 // new login: had to add this bc getting errors before
