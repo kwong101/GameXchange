@@ -121,7 +121,17 @@ export default class CreateListing extends Component {
 
       // 
       handleRedirect = event => {
-        const { history: { push } } = this.props;
+        // FIXME: gotta clean this stuff up later lol
+        // just commented out the line below bc im not using 
+        // push anymore. I'm not using this to redirect, 
+        // now I'm redirecting from the create-listing component.
+
+        // So i probably dont even need this handleRedirect anymore,
+        // nor do we need the else statement at the end of this file.
+        // That else statement down there is what i used to change
+        // what is displayed after submitting post.
+
+        //const { history: { push } } = this.props;
         this.setState({
           isRedirecting: true,
 /*           listingId: event._id.toString()

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {Nav, Navbar} from 'react-bootstrap';
-import PrivateRoute from "./private-route/PrivateRoute";
-import { registerUser } from "../actions/authActions";
+
 import { setCurrentUser } from "../actions/authActions";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
-import Login from "./login.component";
+
 import store from "../store";
 
 
