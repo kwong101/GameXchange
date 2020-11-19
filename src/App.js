@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 /* Bootstrap CSS framework just makes styling easier. */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -63,7 +63,7 @@ if (localStorage.jwtToken) {
 
 function App() {
 
-    const [user, setCurrentUser] = useState({});
+    /* const [user, setCurrentUser] = useState({});
 
     useEffect(() => {
       console.log('idk why i have this here');
@@ -71,7 +71,8 @@ function App() {
 
 
     if (!user) return null;
-
+    */
+  
   return (
     <Provider store={store}>
       <Router>

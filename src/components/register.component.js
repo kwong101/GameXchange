@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
-import classnames from "classnames";
 import { Container, Form, Button } from "react-bootstrap";
 
 class Register extends Component {
@@ -187,7 +186,7 @@ class Register extends Component {
 
                     </Form.Group>
 
-                            
+
 
                     <Button className="submit-button" variant="primary" type="submit">
                         Submit

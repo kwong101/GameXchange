@@ -71,7 +71,8 @@ const email = req.body.email;
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
-// Check password
+    
+    // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User matched
@@ -80,7 +81,8 @@ const email = req.body.email;
           id: user.id,
           name: user.name
         };
-// Sign token
+        
+        // Sign token
         jwt.sign(
           payload,
           keys.secretOrKey,
