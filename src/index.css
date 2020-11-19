@@ -29,7 +29,7 @@ a {
  border-radius: 4px;
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
- -moz-font-feature-settings: "liga" on;
+ font-feature-settings: "liga" on;
  color: rgba(0, 0, 0, 0.84) !important;
  fill: rgba(0, 0, 0, 0.84) !important;
  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
@@ -44,4 +44,17 @@ a {
  padding-right: 4px;
  height: 37px;
  display: inline-block;
+}
+
+.forgot-password,
+.submit-button {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
 }

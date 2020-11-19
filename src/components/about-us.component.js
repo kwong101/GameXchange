@@ -91,7 +91,7 @@ export default class AboutUs extends Component {
 
                 <Col sm >
                   <Card style={{ width: '250px', Height: 'auto' }}>
-                    <Card.Img variant="Confetti." src="https://source.unsplash.com/VpL2pCBfvhU/250x250/" />
+                    <Card.Img variant="People exchanging a box." src="https://source.unsplash.com/BFdSCxmqvYc/250x250/" />
                         <Card.Body>
                           <center>
                             <Card.Title>

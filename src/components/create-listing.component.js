@@ -214,6 +214,7 @@ export default class CreateListing extends Component {
     // create image object and send to image db
 
     onSubmit(e) {
+        //prevents the page from being reloaded when clicking submit
         e.preventDefault();        
         
         const listing = {

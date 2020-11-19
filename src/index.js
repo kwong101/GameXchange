@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import "./index.css";
+
 
 import App from './App';
-
+import './custom.scss';
 import register from "./serviceWorker.js";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
