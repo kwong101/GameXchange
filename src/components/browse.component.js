@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+
 //
 //
 //
@@ -191,12 +193,14 @@ export default class ViewListing extends Component {
 
     render() {
         return (
-            <div className="browse-container">
+          <div className="outer-browse">
+            <div className="inner-browse">
+
+            <Container className="browse-container">
             
             <h3 className="browse-listing-title">Browse Listings</h3>
 
               <Form inline onSubmit={this.onSubmit}>
-
 
                 <div className="browse-search-form">
 
@@ -230,6 +234,8 @@ export default class ViewListing extends Component {
                     { this.listingList() }
                 </tbody>
                 </table>
+            </Container>
+            </div>
             </div>
         )
     }
