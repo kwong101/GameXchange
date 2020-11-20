@@ -451,10 +451,10 @@ export default class CreateListing extends Component {
                 <h1 className="create-listing-header">New listing posted!</h1>
                 
                 <div className="mb-2">
-                  <Button variant="primary" disabled={this.state.isRedirecting} 
+                  {/* <Button variant="primary" disabled={this.state.isRedirecting} 
                     onClick={this.handleRedirect} size="lg">
                     {this.state.isRedirecting ? "Redirecting..." : "View my listing"}
-                  </Button>{' '}
+                  </Button>{' '} */}
                 </div>
                 <div>
                   <Button variant="secondary" size="sm">
