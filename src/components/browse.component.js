@@ -175,12 +175,12 @@ export default class ViewListing extends Component {
             var listing_data = JSON.stringify(data.data);
             console.log(listing_data)
             
-           //console.log(listing_data);
-           //this.onChangeListings(listing_data);
-           
-           this.setState({ listings: data.data })
-           console.log(this.state.listings)
-           
+          //console.log(listing_data);
+          //this.onChangeListings(listing_data);
+          
+          this.setState({ listings: data.data })
+          console.log(this.state.listings)
+          
 
         })
         .catch((error) => {
@@ -192,7 +192,7 @@ export default class ViewListing extends Component {
     render() {
         return (
             <div>
-             <h3>Browse Listings</h3>
+            <h3>Browse Listings</h3>
               <Form onSubmit={this.onSubmit}>
                 <Form.Label>Search Listing</Form.Label>
                 <Form.Control type="text" 

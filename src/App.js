@@ -99,7 +99,7 @@ function App() {
 
               <Route path="/create" component={CreateListing} />
               <Route path="/user" component={CreateUser} />
-              <Route path="/listings/" component={Browse} />
+              <Route exact path="/listings/" component={Browse} />
               <Route path="/listings/:id" component={ViewListing} />
               
               <Route path="/register" component={Register} />
