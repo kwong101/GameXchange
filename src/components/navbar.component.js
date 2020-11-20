@@ -4,6 +4,10 @@ import {Nav, Navbar} from 'react-bootstrap';
 import { setCurrentUser } from "../actions/authActions";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
+import { logoutUser } from "../actions/authActions";
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import store from "../store";
 
@@ -11,7 +15,14 @@ import store from "../store";
 // FIXME: not grabbing the correct image here
 const logo = require('../ge_logo.svg');
 
-var tempShowLoginRegister = false;
+
+/* FIXME: This whole login checker thing is weird but it works.
+I have it checking if user is logged in, but as the code goes thru
+the logic, my boolean vars are flipped. So technically this var
+actually checks if user is NOT logged in, but it doesn't make sense why that works. 
+*/
+
+var tempIsUserLoggedIn;
 
 // Got code from app.js
 if (localStorage.jwtToken) {
@@ -23,23 +34,28 @@ if (localStorage.jwtToken) {
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
-  // new: set the showLoginRegister to true 
+  // new: set the isUserLoggedIn to true 
   // Because this is where the token is generated if possible
-  tempShowLoginRegister = false;
+  tempIsUserLoggedIn = false;
 
-  
   // Got rid of code to check for expired token here
 } else {
   // Else, the token doesnt exist. that means user isn't logged in
-  tempShowLoginRegister = true;
+  tempIsUserLoggedIn = true;
 }
 
-export default class MyNavbar extends Component {
+class MyNavbar extends Component {
+
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       menu: false,
-      showLoginRegister: tempShowLoginRegister
+      isUserLoggedIn: tempIsUserLoggedIn
     };
     this.toggleMenu = this.toggleMenu.bind(this);
   }
@@ -75,7 +91,7 @@ export default class MyNavbar extends Component {
     // this was used with the OLD NAV CODE. its before the return
     //const show = (this.state.menu) ? "show" : "" ;
 
-    if (this.state.showLoginRegister) {
+    if (this.state.isUserLoggedIn) {
       return (
         // NEW NAV CODE with only react-bootstrap
         <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -96,13 +112,13 @@ export default class MyNavbar extends Component {
   
                 <Nav className="mr-auto">
                   <Nav.Link href="/about">About us</Nav.Link>
-                  <Nav.Link href="/create">Post listing</Nav.Link>
+                  {/* <Nav.Link href="/create">Post listing</Nav.Link> */}
                   <Nav.Link href="/listings">Browse</Nav.Link>
-                  <Nav.Link href="#profile">My Profile</Nav.Link>
+                  {/* <Nav.Link href="/dashboard">Dashboard</Nav.Link> */}
                 </Nav>
   
   
-                <Nav className="ml-auto show">
+                <Nav className="ml-auto">
                   <Nav.Link href="/login">Log in</Nav.Link>
                   <Nav.Link href="/register">Register</Nav.Link>
                 </Nav>
@@ -136,9 +152,13 @@ export default class MyNavbar extends Component {
                     <Nav.Link href="/about">About us</Nav.Link>
                     <Nav.Link href="/create">Post listing</Nav.Link>
                     <Nav.Link href="/listings">Browse</Nav.Link>
-                    <Nav.Link href="#profile">My Profile</Nav.Link>
+                    <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                   </Nav>
-                  
+
+
+                  <Nav className="ml-auto">
+                    <Nav.Link onClick={this.onLogoutClick} href="#">Logout</Nav.Link>
+                  </Nav>
                 </Navbar.Collapse>
           
               
@@ -198,3 +218,17 @@ export default class MyNavbar extends Component {
     );
   } */
 }
+
+MyNavbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(MyNavbar);

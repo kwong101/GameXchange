@@ -192,6 +192,7 @@ export default class ViewListing extends Component {
     render() {
         return (
             <div>
+             <h3>Browse Listings</h3>
               <Form onSubmit={this.onSubmit}>
                 <Form.Label>Search Listing</Form.Label>
                 <Form.Control type="text" 
@@ -202,9 +203,7 @@ export default class ViewListing extends Component {
                     Search
                 </Button>
               </Form>
-            
 
-                <h3>Listings List</h3>
                 <table className="table">
                 <thead className="thead-light">
                     <tr>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-import { Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class Dashboard extends Component {
 
@@ -16,7 +16,75 @@ class Dashboard extends Component {
         const { user } = this.props.auth;
             return (
                 
-                <div style={{ height: "75vh" }} className="container valign-wrapper">
+                <Container>
+                    < br />
+                    < br />
+                    <Row className="form-group">
+                        {/* form-group adds 15px margin to bottom of row */}
+                        <Col sm={3} className="form-group ml-0 mr-1 outer-dashboard profile-dashboard inner-dashboard" > 
+                            <div className=" mx-3">
+                                <h5>
+                                    {user.name.split(" ")[0]}
+                                </h5>
+                            </div>
+                            
+                        </Col>
+                        < br />
+
+
+                        <Col sm={3} className="form-group outer-dashboard bio-dashboard  inner-dashboard">
+                            <div className=" mx-3">
+                                <h5>
+                                    Bio
+                                </h5>
+                            </div>
+                            < br />
+
+                            
+                        </Col>
+
+                        <Col sm={3} className="form-group mr-0 ml-1 outer-dashboard stats-dashboard  inner-dashboard">
+                            <div className=" mx-3">
+                                <h5>
+                                    Stats
+                                </h5>
+                            </div>
+
+                        
+                        </Col>
+                            
+                    </Row>
+                    < br />
+                    < br />
+
+
+                    {/* Active listings row */}
+                    <Row className="form-group">
+                        <Col sm={12} className="outer-dashboard inner-dashboard">
+                            <h5>
+                                Active Listings
+                            </h5>
+                        </Col>
+                    </Row>
+
+                    < br />
+                    < br />
+
+                    {/* Favorites row */}
+                    <Row className="form-group">
+                        <Col sm={12} className="outer-dashboard inner-dashboard">
+                            <h5>
+                                Favorites
+                            </h5>
+                        </Col>
+                    </Row>
+                </Container>
+
+
+                    
+
+
+                /* <div style={{ height: "75vh" }} className="container valign-wrapper">
                     <div className="row">
                     <div className="col s12 center-align">
                         <h4>
@@ -40,103 +108,7 @@ class Dashboard extends Component {
                         </button>
                     </div>
                     </div>
-
-                    <Card bg="primary" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Primary Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="secondary" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Secondary Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="success" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Success Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="danger" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Danger Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="warning" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Warning Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="info" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Info Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="dark" text="white" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Dark Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-  <Card bg="light" style={{ width: '18rem' }}>
-    <Card.Header>Header</Card.Header>
-    <Card.Body>
-      <Card.Title>Light Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-                </div>
+ */
             );
     }
 }
