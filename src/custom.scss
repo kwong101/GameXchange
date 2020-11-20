@@ -83,6 +83,8 @@ html,
     height: 150px;
 }
 
+
+
 .inner {
     width: 450px;
     margin: auto;
@@ -137,10 +139,32 @@ html,
         10px 10px 30px 4px rgba(0, 0, 0, 0.795);
 }
 
+.inner-message {
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    border-radius: 15px;
+    transition: all .3s;
+    box-shadow: -10px -10px 30px 4px rgba(0, 0, 0, 0.205),
+        10px 10px 30px 4px rgba(0, 0, 0, 0.795);
+
+        height: 40vh;
+}
+
 .form-inline {
     float: right;
 
 }
+
+.form-inline-message {
+    float: left;
+}
+
 
 .browse-container {
     width: 100%;

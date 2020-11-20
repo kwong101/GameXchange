@@ -1,9 +1,10 @@
-import React, { Component, Row, Col, InputGroup, FormControl } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
 
 //
 //
@@ -40,28 +41,42 @@ Rn the browse page is technically on the /listings/ url
 
 //This is implemented as a functional react component
 // It accepts the props passed into it, which are exercise, deleteexercise, and key
-const Browse = props => (
+const BrowseConst = props => (
     // returns a Table Row
     
     <tr>
-        <td>{props.listing.title}</td>
+        <td>
+          <Link to= {"/listings/"+props.listing._id}>
+            {props.listing.title}
+          </Link>
+        </td>
         <td>{props.listing.description}</td>
         <td>{props.listing.condition}</td>
-        {/*<td>{props.listing.location}</td>
-        <td>{props.listing.price}</td>
+        <td>{props.listing.location}</td>
+        {/* <td>{props.listing.price}</td>
         <td>{props.listing.category}</td>
-        <td>{props.listing.images}</td> */}
+        <td>{props.listing.images}</td>  */}
 
         <td>  
-        <Link to={"/edit/"+props.listing._id}>
-            <button type="button">
-            edit
-            </button>
-        </Link>
-        |  
-        <button onClick={() => { props.deleteListing(props.listing._id) }}>
-            delete
-        </button>
+        <Link to={"#"+props.listing.email}>
+              <button type="button">
+              Send Message
+              </button>
+          </Link>
+          
+          |  
+
+          <Link to={"/edit/"+props.listing._id}>
+              <button type="button">
+              Edit
+              </button>
+          </Link>
+          
+          |  
+
+          <button onClick={() => { props.deleteListing(props.listing._id) }}>
+              Delete
+          </button>
         </td>
     </tr>
 )
@@ -144,7 +159,7 @@ export default class ViewListing extends Component {
         // the component is going to be a row of a table
         // We pass in 3 props, 
         return this.state.listings.map(currentlisting => {
-            return <Browse listing={currentlisting} deleteListing={this.deleteListing} key={currentlisting._id}/>;
+            return <BrowseConst  listing={currentlisting} deleteListing={this.deleteListing} key={currentlisting._id}/>;
         })
     } 
 
@@ -217,23 +232,25 @@ export default class ViewListing extends Component {
                 </div>
               </Form>
 
-                <table className="table">
-                <thead className="thead-light">
-                    <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Condition</th>
-                    <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* 
-                    We still need to implement this exerciseList method
-                    it's going to return the rows of the table
-                    */}  
-                    { this.listingList() }
-                </tbody>
-                </table>
+                <Table striped bordered hover>
+                  <thead className="thead-light">
+                      <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Condition</th>
+                      <th>Location</th>
+                      <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {/* 
+                      We still need to implement this exerciseList method
+                      it's going to return the rows of the table
+                      */}  
+                      
+                      { this.listingList() }
+                  </tbody>
+                </Table>
             </Container>
             </div>
             </div>

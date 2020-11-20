@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
+
+
 
 //The difference between functional react component and a class component is the 
 // lack of state and life cycle methods. 
@@ -16,6 +19,10 @@ import { Container } from 'react-bootstrap';
 
 
 // Browse uses similar setup tho
+
+// FIXME: This is not being used, the listingInfo function doesnt work
+// even though browse uses it that same way. 
+// The functional part of this is just put into the component render() at the end
 const Listing = props => (
     // returns a Table Row
     <tr>
@@ -117,16 +124,16 @@ export default class ViewListing extends Component {
             <Container>
             <div>
                 <h3>View Listing</h3>
-                <table className="table">
-                <thead className="thead-light">
-                    <tr>
-                    <th>Title</th>
-                    <th>Owner</th>
-                    <th>Description</th>
-                    <th>Condition</th>
-                    <th>Actions</th>
-                    </tr>
-                </thead>
+                <Table bordered hover>
+                    <thead className="thead-light">
+                        <tr>
+                        <th>Title</th>
+                        <th>Owner</th>
+                        <th>Description</th>
+                        <th>Condition</th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     {/* 
                     We still need to implement this exerciseList method
@@ -150,7 +157,7 @@ export default class ViewListing extends Component {
                     </td>
                     </tr>
                 </tbody>
-                </table>
+                </Table>
             </div>
             </Container>
             </div>

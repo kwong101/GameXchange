@@ -16,6 +16,8 @@ import ViewListing from './components/view-listing.component';
 import Browse from './components/browse.component';
 import Register from './components/register.component';
 import Login from './components/login.component';
+import Message from './components/message.component';
+
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -104,6 +106,8 @@ function App() {
               
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
+
+              <Route path="/message" component={Message} />
 
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
