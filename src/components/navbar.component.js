@@ -112,9 +112,9 @@ class MyNavbar extends Component {
   
                 <Nav className="mr-auto">
                   <Nav.Link href="/about">About us</Nav.Link>
-                  <Nav.Link href="/create">Post listing</Nav.Link>
+                  {/* <Nav.Link href="/create">Post listing</Nav.Link> */}
                   <Nav.Link href="/listings">Browse</Nav.Link>
-                  <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                  {/* <Nav.Link href="/dashboard">Dashboard</Nav.Link> */}
                 </Nav>
   
   
@@ -150,7 +150,7 @@ class MyNavbar extends Component {
     
                   <Nav className="mr-auto">
                     <Nav.Link href="/about">About us</Nav.Link>
-                    {/* <Nav.Link href="/create">Post listing</Nav.Link> */}
+                    <Nav.Link href="/create">Post listing</Nav.Link>
                     <Nav.Link href="/listings">Browse</Nav.Link>
                     <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                   </Nav>

@@ -111,7 +111,7 @@ export default class ViewListing extends Component {
     render() {
         return (
             <div>
-                <h3>Listings List</h3>
+                <h3>View Listing</h3>
                 <table className="table">
                 <thead className="thead-light">
                     <tr>

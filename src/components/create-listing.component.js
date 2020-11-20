@@ -38,13 +38,6 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
   </tr>
 ) */
 
-
-
-
-
-
-
-
 export default class CreateListing extends Component {
 
 
