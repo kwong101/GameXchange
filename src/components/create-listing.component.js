@@ -348,10 +348,10 @@ class CreateListing extends Component {
       if (this.state.showForm) {
         
         return (
-          <div>
-
+          <div className="outer-create-listing">
+            <div className="inner-create-listing">
             <Container>
-              <Jumbotron>
+              
                   <h1 className="create-listing-header">Create New Listing</h1>
                   
                   {/* <h5>
@@ -386,7 +386,7 @@ class CreateListing extends Component {
                     <Form.Group controlId="formGroupDescription">
                       <Form.Label>Description</Form.Label>
                       <Form.Control as="textarea" placeholder="Description" 
-                        rows={4}
+                        rows={3}
                         value={this.state.description || ''} // (undefined || '') = ''
                         onChange={this.onChangeDescription}
                       />
@@ -454,9 +454,8 @@ class CreateListing extends Component {
                       Post Listing
                     </Button>
                   </Form>
-              </Jumbotron>
             </Container>
-
+            </div>
           </div>
         )
         
