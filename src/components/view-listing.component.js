@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
 
 //The difference between functional react component and a class component is the 
 // lack of state and life cycle methods. 
@@ -111,10 +110,6 @@ export default class ViewListing extends Component {
 
     render() {
         return (
-
-            <div className="outer-view-listing">
-                <div className="inner-view-listing">
-            <Container>
             <div>
                 <h3>View Listing</h3>
                 <table className="table">
@@ -150,10 +145,6 @@ export default class ViewListing extends Component {
                 </tbody>
                 </table>
             </div>
-            </Container>
-            </div>
-            </div>
-            
         )
     }
 }
