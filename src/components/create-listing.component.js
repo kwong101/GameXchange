@@ -10,6 +10,9 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 //import { Link } from 'react-router-dom';
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
 
 // base api url being used
@@ -38,7 +41,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
   </tr>
 ) */
 
-export default class CreateListing extends Component {
+class CreateListing extends Component {
 
 
     constructor(props) {
@@ -234,11 +237,9 @@ export default class CreateListing extends Component {
 
         this.handleHide();
 
-
         // this doesnt print listingid
         console.log('listing log here');
         console.log(listing.listingId);
-
 
         axios.post('http://localhost:5000/listings/add', listing)
         .then((data) => {
@@ -248,6 +249,9 @@ export default class CreateListing extends Component {
           console.log('title = ' + this.state.title)
           this.listingId = listing_data.substring(8,32)
           
+          //  set this equal here ASAP: this.owner
+
+
           //adding image stuff
           let imageFormObj = new FormData();
           imageFormObj.append("imageName", "multer-image-" + Date.now());
@@ -333,19 +337,27 @@ export default class CreateListing extends Component {
 
 
     render() {
+      const { loggedInUser } = this.props.auth;
+      
+
+
       // this should be this.state.showform not !
       // FIXME: ASAP this for 
       // DEBUG: 
       if (this.state.showForm) {
+        
         return (
           <div>
 
             <Container>
               <Jumbotron>
                   <h1 className="create-listing-header">Create New Listing</h1>
-
+                  
+                  {/* <h5>
+                    {loggedInUser.name.split(" ")[0]}
+                  </h5> */}
+                  
                   <Form onSubmit={this.onSubmit}>
-
 
                     <Form.Group controlId="formGroupTitle">
                       <Form.Label>Title</Form.Label>
@@ -357,6 +369,13 @@ export default class CreateListing extends Component {
 
                     <Form.Group controlId="formGroupOwner">
                       <Form.Label>Owner</Form.Label>
+                      
+                      {/* checking if i can print username here */}
+{/*                       <Form.Control readOnly placeholder={loggedInUser.name.split(" ")[0] || ''} />
+ */}                        {/*  value={user.name.split(" ")[0] || ''} // (undefined || '') = ''
+                        onChange={this.onChangeOwner} />  */}
+                      
+
                       <Form.Control type="text" placeholder="Owner" 
                         value={this.state.owner || ''} // (undefined || '') = ''
                         onChange={this.onChangeOwner}
@@ -474,3 +493,16 @@ export default class CreateListing extends Component {
         
 }
 
+CreateListing.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(CreateListing);

@@ -121,6 +121,7 @@ export default class ViewListing extends Component {
                 <thead className="thead-light">
                     <tr>
                     <th>Title</th>
+                    <th>Owner</th>
                     <th>Description</th>
                     <th>Condition</th>
                     <th>Actions</th>
@@ -133,6 +134,7 @@ export default class ViewListing extends Component {
                     */} 
                     <tr> 
                     <td>{ this.state.title }</td>
+                    <td>{ this.state.owner }</td>
                     <td>{ this.state.description }</td>
                     <td>{ this.state.condition }</td>
                     <td>  
