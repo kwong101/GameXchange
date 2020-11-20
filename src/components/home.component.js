@@ -9,27 +9,37 @@ export default class Home extends Component {
       return (
         <div>
           <Container fluid>
-            <Row sm= {1}>
-
-                <Col xs="auto">
-                    <center>  
+          <center>  
                       <h1>
                           GameXchange
                       </h1>
                     </center>
-                </Col> 
-            </Row>            
-            <Row sm={1} md={3}>
+                    <br />
+                    <br />
+                    <br />
+
+                    <Row>
                 <Col sm>
-                    <Card stepone = "text-c" style={{ width: '250px', Height: 'auto' }} >
-                    <Card.Img variant="App store." src="https://source.unsplash.com/250x250/daily/?appstore" />
+                    {/* 
+                      FIXME: should i be using center like this? isn't it bad
+                      practice to style using html? 
+                    */}
+
+                </Col>
+            </Row>
+            
+            <Row sm >
+                <Col sm className="outer-steps inner-steps">
+                  <center>
+                  <Card stepone = "text-c" style={{ width: '250px', Height: 'auto' }} >
+                    <Card.Img variant="Browse" src="https://source.unsplash.com/20WoowHnS5k/250x250/" />
                         <Card.Body>
                           {/* 
                             FIXME: used <center> again
                           */}
                           <center>
                             <Card.Title>
-                              Board Games
+                              Browse Board Games
                             </Card.Title>
                           </center>
                             <Card.Text>
@@ -38,18 +48,21 @@ export default class Home extends Component {
                             </Card.Text>
                         </Card.Body>
                     </Card>
+                    </center>
                 </Col>
 
-                <Col sm>
-                  <Card style={{ width: '250px', Height: 'auto' }}>
-                    <Card.Img variant="Person running." src="https://source.unsplash.com/250x250/daily/?running"/>
+                <Col sm  className="outer-steps inner-steps middle-card-about">
+                  <center>
+                  <Card style={{ width: '250px', Height: 'auto'}} >
+                    <Card.Img variant="" src="https://source.unsplash.com/VpL2pCBfvhU/250x250/" />
                         <Card.Body>
                           {/* 
                             FIXME: used <center> again
+                            FIXME: This is so bad
                           */}
                           <center>
                             <Card.Title>
-                              Puzzles
+                              Browse Puzzles
                             </Card.Title>
                           </center>
                             <Card.Text>
@@ -58,15 +71,17 @@ export default class Home extends Component {
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                </Col>
+                    </center>
+                  </Col>
 
-                <Col sm >
+                <Col sm  className="outer-steps inner-steps">
+                  <center>
                   <Card style={{ width: '250px', Height: 'auto' }}>
-                    <Card.Img variant="Confetti." src="https://source.unsplash.com/250x250/daily/?confetti" />
+                    <Card.Img variant="People exchanging a box." src="https://source.unsplash.com/BFdSCxmqvYc/250x250/" />
                         <Card.Body>
                           <center>
                             <Card.Title>
-                              Card Games
+                              Browse Card Games
                             </Card.Title>
                           </center>
                             <Card.Text>
@@ -75,6 +90,7 @@ export default class Home extends Component {
                             </Card.Text>
                         </Card.Body>
                     </Card>
+                    </center>
                 </Col>
             </Row>
           </Container>
