@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faMoon, faSun, faSnowflake, faHourglass } from '@fortawesome/free-solid-svg-icons'
+
 
 class Dashboard extends Component {
 
@@ -23,6 +26,11 @@ class Dashboard extends Component {
                         {/* form-group adds 15px margin to bottom of row */}
                         <Col sm={3} className="form-group ml-0 mr-1 outer-dashboard profile-dashboard inner-dashboard" > 
                             <div className=" mx-3">
+                                <br />
+                                <img className="img-profile" src="https://source.unsplash.com/U-Z4P2H3KFE/80x80/" alt="Male profile pic."/>
+
+                                <br />
+
                                 <h5>
                                     {user.name.split(" ")[0]}
                                 </h5>
@@ -32,11 +40,12 @@ class Dashboard extends Component {
                         < br />
 
 
-                        <Col sm={3} className="form-group outer-dashboard bio-dashboard  inner-dashboard">
+                        <Col sm={5} className="form-group outer-dashboard bio-dashboard  inner-dashboard">
                             <div className=" mx-3">
                                 <h5>
                                     Bio
                                 </h5>
+                                <p>Journalist, artist, and avid explorer. I would expect to be a lot better at puzzles by now. These badges make me feel a little better, though.</p>
                             </div>
                             < br />
 
@@ -46,8 +55,20 @@ class Dashboard extends Component {
                         <Col sm={3} className="form-group mr-0 ml-1 outer-dashboard stats-dashboard  inner-dashboard">
                             <div className=" mx-3">
                                 <h5>
-                                    Stats
+                                    Badges
                                 </h5>
+                                
+                                <br />
+                                
+                                <p>
+                                    <FontAwesomeIcon className="fa-fw" size="lg" icon={faCoffee} /> <FontAwesomeIcon className="fa-fw" size="lg" icon={faMoon} /> 
+                                </p>
+                                
+                                <p>
+                                    <FontAwesomeIcon className="fa-fw" size="lg" icon={faSun} />
+                                    <FontAwesomeIcon className="fa-fw" size="lg" icon={faSnowflake} />
+                                    <FontAwesomeIcon className="fa-fw" size="lg" icon={faHourglass} />
+                                </p>
                             </div>
 
                         
@@ -60,10 +81,14 @@ class Dashboard extends Component {
 
                     {/* Active listings row */}
                     <Row className="form-group">
-                        <Col sm={12} className="outer-dashboard inner-dashboard">
+                        <Col sm={12} className="outer-dashboard inner-dashboard active-listings-">
                             <h5>
                                 Active Listings
                             </h5>
+                            <div className="first-listing">
+                                <Image src="./display-images/eels-and-escalators.jpg" />
+                            </div>
+
                         </Col>
                     </Row>
 
@@ -76,6 +101,9 @@ class Dashboard extends Component {
                             <h5>
                                 Favorites
                             </h5>
+
+                            
+
                         </Col>
                     </Row>
                 </Container>
