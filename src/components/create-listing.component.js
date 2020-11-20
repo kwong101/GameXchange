@@ -8,13 +8,6 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-
-
-import { logoutUser } from "../actions/authActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-
-
 //import { Link } from 'react-router-dom';
 
 
@@ -45,7 +38,7 @@ import { connect } from "react-redux";
   </tr>
 ) */
 
-class CreateListing extends Component {
+export default class CreateListing extends Component {
 
 
     constructor(props) {
@@ -340,11 +333,6 @@ class CreateListing extends Component {
 
 
     render() {
-      
-      const { user } = this.props.auth;
-
-
-
       // this should be this.state.showform not !
       // FIXME: ASAP this for 
       // DEBUG: 
@@ -369,9 +357,9 @@ class CreateListing extends Component {
 
                     <Form.Group controlId="formGroupOwner">
                       <Form.Label>Owner</Form.Label>
-                      <Form.Control readOnly placeholder={user.name.split(" ")[0] || ''} // (undefined || '') = '' 
-                        /* value={user.name.split(" ")[0] || ''} // (undefined || '') = ''
-                        onChange={this.onChangeOwner} */
+                      <Form.Control type="text" placeholder="Owner" 
+                        value={this.state.owner || ''} // (undefined || '') = ''
+                        onChange={this.onChangeOwner}
                       />
                     </Form.Group>
 
@@ -486,16 +474,3 @@ class CreateListing extends Component {
         
 }
 
-CreateListing.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(CreateListing);
