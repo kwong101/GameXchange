@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 //
 //
 //
@@ -39,6 +40,7 @@ Rn the browse page is technically on the /listings/ url
 // It accepts the props passed into it, which are exercise, deleteexercise, and key
 const Browse = props => (
     // returns a Table Row
+    
     <tr>
         <td>{props.listing.title}</td>
         <td>{props.listing.description}</td>
@@ -73,10 +75,33 @@ export default class ViewListing extends Component {
         super(props);
 
         this.deleteListing = this.deleteListing.bind(this);
+        this.onChangeQuery = this.onChangeQuery.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            listings: []
+            listings: [],
+            query: "",
+            search_results: []
         };
+
+    }
+
+    onChangeQuery(e) {
+        this.setState({
+            query: e.target.value
+        })
+    }
+
+    onChangeListings(e) {
+        this.setState({
+            listings: e.target.value
+        })
+    }
+
+    handleHide = () =>{
+        this.setState({
+            showForm: false
+        })
     }
 
     //get the list of exercises from the db 
@@ -121,10 +146,64 @@ export default class ViewListing extends Component {
         })
     } 
 
+    onSubmit(e) {
+        //prevents the page from being reloaded when clicking submit
+        e.preventDefault();        
+        
+        const query = this.state.query;
+
+        console.log("this is query:");
+        console.log(query);
+
+        
+
+        //trying the formdata way as advised, doesnt work stil
+        var queryObj = new FormData();
+          queryObj.append("user_query", query);
+
+        this.handleHide();
+
+        // var query1 = Object.keys(this.state.query).map(function(key) {
+        //     return encodeURIComponent(key) + '=' + encodeURIComponent(this.state.query[key])
+        // }).join('&')
+
+        queryObj = {"query" : this.state.query}
+
+        axios.post('http://localhost:5000/listings/browse', queryObj, {headers:{"Content-Type" : "application/json"}})
+          .then((data) => {
+            console.log('WOOT')
+            var listing_data = JSON.stringify(data.data);
+            console.log(listing_data)
+            
+           //console.log(listing_data);
+           //this.onChangeListings(listing_data);
+           
+           this.setState({ listings: data.data })
+           console.log(this.state.listings)
+           
+
+        })
+        .catch((error) => {
+            console.log('this is the error')
+            console.log(error);
+        });
+    }
+
     render() {
         return (
             <div>
-                <h3>Browse Listings</h3>
+             <h3>Browse Listings</h3>
+              <Form onSubmit={this.onSubmit}>
+                <Form.Label>Search Listing</Form.Label>
+                <Form.Control type="text" 
+                    value={this.state.query } // (undefined || '') = ''
+                    onChange={this.onChangeQuery}
+                />
+                <Button variant="primary" type="submit" className="btn btn-primary">
+                    Search
+                </Button>
+              </Form>
+
                 <table className="table">
                 <thead className="thead-light">
                     <tr>

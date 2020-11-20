@@ -8,17 +8,20 @@ const listingSchema = new Schema({
     unique: true,
     required: true,
     minlength: 3,
+    text: true,
   },
 
   description: {
     type: String,
     required: true,
     minlength: 3,
+    text: true,
   },
 
   owner: {
     type: String,
     required: true,
+    text: true,
   },
 
   condition: {
@@ -29,6 +32,7 @@ const listingSchema = new Schema({
   location: {
     type: String,
     required: true,
+    text: true
   },
 
   price: {
@@ -39,6 +43,7 @@ const listingSchema = new Schema({
   category: {
     type: String,
     required: true,
+    text: true
   },
 
   listingId: {
@@ -49,6 +54,10 @@ const listingSchema = new Schema({
   timestamps: true,
 });
 
+
+
 const Listing = mongoose.model('Listing', listingSchema);
+
+
 
 module.exports = Listing;
