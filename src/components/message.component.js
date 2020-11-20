@@ -53,7 +53,7 @@ function Message(props) {
                 <Form.Group>
                 <Form inline className="form-inline-message mt-3 mb-2">
                     <Form.Label>To: </Form.Label>
-                    <Form.Control placeholder="fakeEmail@gmail.com" disabled />
+                    <Form.Control placeholder="Megan" disabled />
                     </Form> 
                 </Form.Group>
                 <Form.Group className="message-area mb-2 mt-5">

@@ -20,7 +20,11 @@ class Dashboard extends Component {
             return (
                 
                 <Container>
-                    < br />
+                    <center>  
+                        <h1>
+                            Dashboard
+                        </h1>
+                    </center>
                     < br />
                     <Row className="form-group">
                         {/* form-group adds 15px margin to bottom of row */}
