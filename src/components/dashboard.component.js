@@ -81,12 +81,31 @@ class Dashboard extends Component {
 
                     {/* Active listings row */}
                     <Row className="form-group">
-                        <Col sm={12} className="outer-dashboard inner-dashboard active-listings-">
+                        <Col sm={12} className="outer-dashboard inner-dashboard active-listings">
                             <h5>
                                 Active Listings
                             </h5>
                             <div className="first-listing">
-                                <Image src="./display-images/eels-and-escalators.jpg" />
+                                
+                                    <div >
+                                    <Image src={require('./display-images/eels-and-escalators.jpg')} rounded/>
+                                    <h6>Eels and escalators</h6>
+                                    </div>
+
+                                    <div>
+                                    <Image src="https://source.unsplash.com/_zNgspEPHCI/140x140/" rounded />
+                                    <h6>Scrabble</h6>
+                                    </div>
+
+                                    <div>
+                                    <Image src="https://source.unsplash.com/MkoTQg_5xjw/140x140/" rounded />
+                                    <h6>Monopoly</h6>
+                                    </div>
+
+                                    <div>
+                                    <Image src="https://source.unsplash.com/6jwkGVyb9zY/140x140/" rounded />
+                                    <h6>Golden Gate Bridge Puzzle</h6>
+                                    </div>
                             </div>
 
                         </Col>
@@ -97,11 +116,32 @@ class Dashboard extends Component {
 
                     {/* Favorites row */}
                     <Row className="form-group">
-                        <Col sm={12} className="outer-dashboard inner-dashboard">
+                        <Col sm={12} className="outer-dashboard inner-dashboard favorites-row">
                             <h5>
                                 Favorites
                             </h5>
+                            <div className="first-listing">
+                                
+                                <div >
+                                <Image src="https://source.unsplash.com/KJMz5Tmbw0k/140x140/" rounded />
+                                <h6>The Game of Life</h6>
+                                </div>
 
+                                <div>
+                                <Image src="https://source.unsplash.com/mxsXtGVjiBg/140x140/" rounded />
+                                <h6>Ravensburger Field Puzzle</h6>
+                                </div>
+
+                                <div>
+                                <Image src="https://source.unsplash.com/scPpnskdiAU/140x140/" rounded />
+                                <h6>Doves Puzzle</h6>
+                                </div>
+
+                                <div>
+                                <Image src="https://source.unsplash.com/X-A-LJVAhzk/140x140/" rounded />
+                                <h6>Dungeons and Dragons Board Game</h6>
+                                </div>
+                        </div>
                             
 
                         </Col>

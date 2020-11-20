@@ -239,6 +239,26 @@ html,
     text-align: left;
 }
 
+.first-listing {
+    display: inline-flex;
+}
+
+.first-listing img {
+    height: 140px;
+    width: 140px;
+    margin-left: 60px;
+    margin-right: 60px;
+
+}
+
+.active-listings {
+    height: 220px;
+}
+
+.favorites-row {
+    height: 220px;
+}
+
 /* @media (min-width: 400px) {
     .col-sm-4 {
         flex: 0 0 25%;
