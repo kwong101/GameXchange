@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Row, Col, InputGroup, FormControl } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
@@ -191,17 +191,26 @@ export default class ViewListing extends Component {
 
     render() {
         return (
-            <div>
-            <h3>Browse Listings</h3>
-              <Form onSubmit={this.onSubmit}>
-                <Form.Label>Search Listing</Form.Label>
-                <Form.Control type="text" 
-                    value={this.state.query } // (undefined || '') = ''
-                    onChange={this.onChangeQuery}
-                />
-                <Button variant="primary" type="submit" className="btn btn-primary">
-                    Search
-                </Button>
+            <div className="browse-container">
+            
+            <h3 className="browse-listing-title">Browse Listings</h3>
+
+              <Form inline onSubmit={this.onSubmit}>
+
+
+                <div className="browse-search-form">
+
+                  <Form.Control type="text" 
+                      placeholder="Search listings..."
+                      value={this.state.query } // (undefined || '') = ''
+                      onChange={this.onChangeQuery}
+                      className="mb-2 mt-2"
+                  />
+                  <Button variant="primary" type="submit" className="mx-2 mb-2 mt-2 btn btn-primary">
+                      Search
+                  </Button>
+                  <Button variant="secondary" onClick={() => window.location.reload()}>Clear filters</Button>
+                </div>
               </Form>
 
                 <table className="table">
