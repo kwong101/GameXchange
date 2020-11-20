@@ -145,6 +145,13 @@ export default class ViewListing extends Component {
                     <td>{ this.state.description }</td>
                     <td>{ this.state.condition }</td>
                     <td>  
+                    <Link to={"/message/"}>
+                        <button type="button">
+                            Send Message
+                        </button>
+                    </Link>
+                    
+                    |  
                     <Link to={"/edit/"+this.props.match.params.id}>
                         <button type="button">
                         edit

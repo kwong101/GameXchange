@@ -337,7 +337,8 @@ class CreateListing extends Component {
 
 
     render() {
-      const { loggedInUser } = this.props.auth;
+      // Couldn't figure this part out
+      //const { loggedInUser } = this.props.auth;
       
 
 
@@ -368,14 +369,14 @@ class CreateListing extends Component {
                     </Form.Group>
 
                     <Form.Group controlId="formGroupOwner">
-                      <Form.Label>Owner</Form.Label>
+                      
                       
                       {/* checking if i can print username here */}
 {/*                       <Form.Control readOnly placeholder={loggedInUser.name.split(" ")[0] || ''} />
  */}                        {/*  value={user.name.split(" ")[0] || ''} // (undefined || '') = ''
                         onChange={this.onChangeOwner} />  */}
                       
-
+                      <Form.Label>Owner</Form.Label>
                       <Form.Control type="text" placeholder="Owner" 
                         value={this.state.owner || ''} // (undefined || '') = ''
                         onChange={this.onChangeOwner}

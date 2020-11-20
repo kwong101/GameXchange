@@ -1,7 +1,4 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../actions/authActions";
+import React from "react";
 import { Form, Button, Container, } from "react-bootstrap";
 
 

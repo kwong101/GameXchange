@@ -58,7 +58,7 @@ const BrowseConst = props => (
         <td>{props.listing.images}</td>  */}
 
         <td>  
-        <Link to={"#"+props.listing.email}>
+        <Link to={"/message/"}>
               <button type="button">
               Send Message
               </button>
