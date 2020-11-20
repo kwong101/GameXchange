@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { queryAllByPlaceholderText } = require('@testing-library/react');
 let Listing = require('../models/listing.model');
 
 router.route('/').get((req, res) => {
@@ -78,5 +79,20 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+
+
+router.route('/browse').post((req, res) => {
+  console.log(' **Search function called **');
+
+  const query = req.body.query;
+  Listing.find( {$text: {$search: query }})
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json('Error: ' + err));
+    console.log('yay');
+
+});
+
+
 
 module.exports = router;
