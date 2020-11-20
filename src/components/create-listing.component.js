@@ -442,10 +442,11 @@ class CreateListing extends Component {
                     </Form.Group>
 
                     <Form.Group controlId="formGroupImages">
+                      <Form.Label>Upload image</Form.Label>
                       <Form.File 
-                        className="process__upload-btn"
+                        custom
                         id="file-upload"
-                        label="Images"
+                        label=" "
                         onChange={this.onChangeMulterImage}
                       />
                     </Form.Group>
