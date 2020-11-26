@@ -43,8 +43,7 @@ export default class Home extends Component {
                             </Card.Title>
                           </center>
                             <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
+                            {/* subtitle here? */}
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -66,8 +65,7 @@ export default class Home extends Component {
                             </Card.Title>
                           </center>
                             <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
+                            {/* subtitle here? */}
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -85,8 +83,7 @@ export default class Home extends Component {
                             </Card.Title>
                           </center>
                             <Card.Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum ipsum eu metus dapibus vestibulum.
+                            {/* subtitle here? */}
                             </Card.Text>
                         </Card.Body>
                     </Card>

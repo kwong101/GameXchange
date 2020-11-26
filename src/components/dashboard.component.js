@@ -31,7 +31,7 @@ class Dashboard extends Component {
                         <Col sm={3} className="form-group ml-0 mr-1 outer-dashboard profile-dashboard inner-dashboard" > 
                             <div className=" mx-3">
                                 <br />
-                                <img className="img-profile" src="https://source.unsplash.com/U-Z4P2H3KFE/80x80/" alt="Male profile pic."/>
+                                <img className="img-profile" src="https://source.unsplash.com/DLICfSD33as/80x80/" alt="Male profile pic."/>
 
                                 <br />
 
@@ -49,7 +49,7 @@ class Dashboard extends Component {
                                 <h5>
                                     Bio
                                 </h5>
-                                <p>Journalist, artist, and avid explorer. I would expect to be a lot better at puzzles by now. These badges make me feel a little better, though.</p>
+                                <p>Board game enthusiast, puzzle amateur. I would expect to be a lot better at puzzles by now. These badges make me feel a little better, though.</p>
                             </div>
                             < br />
 

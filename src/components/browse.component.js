@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 //
 //
@@ -228,6 +230,14 @@ export default class ViewListing extends Component {
                   <Button variant="primary" type="submit" className="mx-2 mb-2 mt-2 btn btn-primary">
                       Search
                   </Button>
+                  <Button variant="info" className="mr-2 mb-2 mt-2">Filters</Button>
+{/*                   <DropdownButton id="dropdown-info-button" title="Filters" variant="info">
+                    <Dropdown.Item href="#/action-1">Type</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Date</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Location</Dropdown.Item>
+                    <Dropdown.Item href="#/action-4">Trade/Sale Status</Dropdown.Item>
+                    <Dropdown.Item href="#/action-5">Price</Dropdown.Item>
+                  </DropdownButton> */}
                   <Button variant="secondary" onClick={() => window.location.reload()}>Clear filters</Button>
                 </div>
               </Form>
